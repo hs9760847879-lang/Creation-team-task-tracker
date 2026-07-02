@@ -1,0 +1,267 @@
+import { useState, useEffect, useCallback } from 'react'
+import { supabase } from '../../lib/supabase'
+import { useAuth } from '../../hooks/useAuth'
+import { formatDuration, getStatusBadgeColor, cn } from '../../lib/utils'
+import { Plus, Send, Pencil, Check, X } from 'lucide-react'
+import Modal from '../../components/ui/Modal'
+
+export default function AgentTasks() {
+  const { user, profile } = useAuth()
+  const [assignments, setAssignments] = useState([])
+  const [tasks, setTasks] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [registerModal, setRegisterModal] = useState(false)
+  const [selectedTask, setSelectedTask] = useState('')
+  const [registering, setRegistering] = useState(false)
+  const [editingCount, setEditingCount] = useState(null)
+  const [editValue, setEditValue] = useState(1)
+
+  const fetchAssignments = useCallback(async () => {
+    if (!user) return
+    const { data } = await supabase
+      .from('assignments')
+      .select('*, task:tasks(title, type)')
+      .eq('agent_id', user.id)
+      .order('created_at', { ascending: false })
+    if (data) setAssignments(data)
+    setLoading(false)
+  }, [user])
+
+  const fetchTasks = useCallback(async () => {
+    const { data } = await supabase
+      .from('tasks')
+      .select('*')
+      .eq('is_active', true)
+      .order('title')
+    if (data) setTasks(data)
+  }, [])
+
+  useEffect(() => {
+    fetchAssignments()
+    fetchTasks()
+  }, [fetchAssignments, fetchTasks])
+
+  async function handleSubmit(assignmentId) {
+    if (!confirm('Submit this task as completed?')) return
+    const now = new Date().toISOString()
+    const { error } = await supabase
+      .from('assignments')
+      .update({
+        status: 'completed',
+        started_at: now,
+        submitted_at: now,
+      })
+      .eq('id', assignmentId)
+    if (!error) fetchAssignments()
+  }
+
+  async function handleEditCount(assignmentId) {
+    const { error } = await supabase
+      .from('assignments')
+      .update({ task_count: editValue })
+      .eq('id', assignmentId)
+    if (!error) {
+      setEditingCount(null)
+      fetchAssignments()
+    }
+  }
+
+  async function handleRegister(e) {
+    e.preventDefault()
+    if (!selectedTask) return
+    setRegistering(true)
+    const { error } = await supabase.from('assignments').insert({
+      agent_id: user.id,
+      task_id: selectedTask,
+      status: 'pending',
+      task_count: 1,
+      registered_by_agent: true,
+    })
+    setRegistering(false)
+    if (!error) {
+      setRegisterModal(false)
+      setSelectedTask('')
+      fetchAssignments()
+    }
+  }
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <div className="animate-spin w-8 h-8 border-2 border-primary border-t-transparent rounded-full" />
+      </div>
+    )
+  }
+
+  return (
+    <div>
+      <div className="flex items-center justify-between mb-6">
+        <div>
+          <h1 className="text-2xl font-bold text-slate-900">My Tasks</h1>
+          <p className="text-sm text-text-secondary mt-1">
+            Track and manage your assigned tasks
+          </p>
+        </div>
+        <button
+          onClick={() => setRegisterModal(true)}
+          className="btn btn-primary"
+        >
+          <Plus size={16} />
+          Register Task
+        </button>
+      </div>
+
+      <div className="card overflow-hidden">
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-border bg-slate-50">
+                <th className="text-left px-4 py-3 font-medium text-text-secondary">Agent</th>
+                <th className="text-left px-4 py-3 font-medium text-text-secondary">Task</th>
+                <th className="text-left px-4 py-3 font-medium text-text-secondary">Slack / Email</th>
+                <th className="text-center px-4 py-3 font-medium text-text-secondary">Count</th>
+                <th className="text-center px-4 py-3 font-medium text-text-secondary">Status</th>
+                <th className="text-center px-4 py-3 font-medium text-text-secondary">Time</th>
+                <th className="text-center px-4 py-3 font-medium text-text-secondary">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {assignments.length === 0 ? (
+                <tr>
+                  <td colSpan={7} className="text-center py-12 text-text-secondary">
+                    No tasks assigned yet. Click "Register Task" to add one.
+                  </td>
+                </tr>
+              ) : (
+                assignments.map((a) => (
+                  <tr key={a.id} className="border-b border-border hover:bg-slate-50/50 transition-colors">
+                    <td className="px-4 py-3">
+                      <div className="flex items-center gap-2">
+                        <div className="w-7 h-7 rounded-full bg-indigo-100 flex items-center justify-center text-xs font-medium text-indigo-700">
+                          {profile?.name?.charAt(0)?.toUpperCase() || 'U'}
+                        </div>
+                        <span className="font-medium">{profile?.name || 'You'}</span>
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 max-w-[180px]">
+                      <span className="truncate block">{a.task?.title || 'Unknown'}</span>
+                      {a.registered_by_agent && (
+                        <span className="badge badge-info text-[10px] mt-0.5">Self-registered</span>
+                      )}
+                    </td>
+                    <td className="px-4 py-3">
+                      {profile?.slack_link ? (
+                        <a
+                          href={profile.slack_link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-indigo-600 hover:text-indigo-700 underline"
+                        >
+                          {profile.slack_link.length > 25
+                            ? profile.slack_link.slice(0, 25) + '…'
+                            : profile.slack_link}
+                        </a>
+                      ) : (
+                        <span className="text-text-secondary">—</span>
+                      )}
+                    </td>
+                    <td className="px-4 py-3 text-center">
+                      {editingCount === a.id ? (
+                        <div className="flex items-center justify-center gap-1">
+                          <input
+                            type="number"
+                            min={1}
+                            value={editValue}
+                            onChange={(e) => setEditValue(Number(e.target.value))}
+                            className="input w-16 text-center text-sm"
+                            autoFocus
+                          />
+                          <button
+                            onClick={() => handleEditCount(a.id)}
+                            className="p-1 text-emerald-600 hover:bg-emerald-50 rounded"
+                          >
+                            <Check size={14} />
+                          </button>
+                          <button
+                            onClick={() => setEditingCount(null)}
+                            className="p-1 text-red-500 hover:bg-red-50 rounded"
+                          >
+                            <X size={14} />
+                          </button>
+                        </div>
+                      ) : (
+                        <button
+                          onClick={() => { setEditingCount(a.id); setEditValue(a.task_count) }}
+                          className="inline-flex items-center gap-1 hover:text-indigo-600 transition-colors"
+                        >
+                          <span className="font-medium">{a.task_count}</span>
+                          <Pencil size={12} className="opacity-40" />
+                        </button>
+                      )}
+                    </td>
+                    <td className="px-4 py-3 text-center">
+                      <span className={cn('badge', getStatusBadgeColor(a.status))}>
+                        {a.status}
+                      </span>
+                    </td>
+                    <td className="px-4 py-3 text-center text-text-secondary text-xs">
+                      {a.status === 'completed'
+                        ? formatDuration(a.time_taken_minutes)
+                        : '—'}
+                    </td>
+                    <td className="px-4 py-3 text-center">
+                      {a.status === 'completed' ? (
+                        <span className="text-xs text-text-secondary">Done</span>
+                      ) : (
+                        <button
+                          onClick={() => handleSubmit(a.id)}
+                          className="btn btn-success text-xs py-1.5"
+                        >
+                          <Send size={12} />
+                          Submit
+                        </button>
+                      )}
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <Modal open={registerModal} onClose={() => setRegisterModal(false)} title="Register a Task">
+        <form onSubmit={handleRegister} className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Task</label>
+            <select
+              value={selectedTask}
+              onChange={(e) => setSelectedTask(e.target.value)}
+              className="input"
+              required
+            >
+              <option value="">Select a task…</option>
+              {tasks.map((t) => (
+                <option key={t.id} value={t.id}>
+                  {t.title}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="flex gap-2 justify-end pt-2">
+            <button
+              type="button"
+              onClick={() => setRegisterModal(false)}
+              className="btn btn-outline"
+            >
+              Cancel
+            </button>
+            <button type="submit" disabled={registering} className="btn btn-primary">
+              {registering ? 'Registering…' : 'Register'}
+            </button>
+          </div>
+        </form>
+      </Modal>
+    </div>
+  )
+}
