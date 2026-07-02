@@ -21,6 +21,8 @@ export function getStatusBadgeColor(status) {
       return 'badge-warning'
     case 'pending':
       return 'badge-info'
+    case 'pending_approval':
+      return 'badge-warning'
     default:
       return 'badge-info'
   }

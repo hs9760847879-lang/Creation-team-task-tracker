@@ -16,6 +16,7 @@ export default function AdminTasks() {
   const [selectedAgent, setSelectedAgent] = useState('')
   const [selectedTask, setSelectedTask] = useState('')
   const [taskCount, setTaskCount] = useState(1)
+  const [slackLink, setSlackLink] = useState('')
   const [newTaskName, setNewTaskName] = useState('')
   const [submitting, setSubmitting] = useState(false)
 
@@ -37,6 +38,11 @@ export default function AdminTasks() {
     e.preventDefault()
     if (!selectedAgent || !selectedTask) return
     setSubmitting(true)
+
+    if (slackLink.trim()) {
+      await supabase.from('profiles').update({ slack_link: slackLink.trim() }).eq('id', selectedAgent)
+    }
+
     const { error } = await supabase.from('assignments').insert({
       agent_id: selectedAgent,
       task_id: selectedTask,
@@ -49,6 +55,7 @@ export default function AdminTasks() {
       setSelectedAgent('')
       setSelectedTask('')
       setTaskCount(1)
+      setSlackLink('')
       fetchData()
     }
   }
@@ -77,6 +84,18 @@ export default function AdminTasks() {
     fetchData()
   }
 
+  async function handleApprove(id) {
+    await supabase.from('assignments').update({ status: 'pending' }).eq('id', id)
+    fetchData()
+  }
+
+  async function handleReject(id) {
+    await supabase.from('assignments').update({ status: 'completed', time_taken_minutes: 0 }).eq('id', id)
+    fetchData()
+  }
+
+  const pendingApprovals = assignments.filter((a) => a.status === 'pending_approval')
+
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
@@ -103,6 +122,55 @@ export default function AdminTasks() {
           </button>
         </div>
       </div>
+
+      {pendingApprovals.length > 0 && (
+        <div className="card overflow-hidden mb-6 border-amber-200">
+          <div className="px-4 py-3 border-b border-border bg-amber-50 flex items-center justify-between">
+            <h2 className="text-sm font-semibold text-amber-800 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+              Pending Approvals ({pendingApprovals.length})
+            </h2>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-border bg-amber-50/50">
+                  <th className="text-left px-4 py-3 font-medium text-text-secondary">Agent</th>
+                  <th className="text-left px-4 py-3 font-medium text-text-secondary">Task</th>
+                  <th className="text-center px-4 py-3 font-medium text-text-secondary">Count</th>
+                  <th className="text-center px-4 py-3 font-medium text-text-secondary">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {pendingApprovals.map((a) => (
+                  <tr key={a.id} className="border-b border-border hover:bg-amber-50/30 transition-colors">
+                    <td className="px-4 py-3">
+                      <div className="flex items-center gap-2">
+                        <div className="w-7 h-7 rounded-full bg-amber-100 flex items-center justify-center text-xs font-medium text-amber-700">
+                          {a.agent?.name?.charAt(0)?.toUpperCase() || 'U'}
+                        </div>
+                        <span className="font-medium">{a.agent?.name || 'Unknown'}</span>
+                      </div>
+                    </td>
+                    <td className="px-4 py-3">{a.task?.title || 'Unknown'}</td>
+                    <td className="px-4 py-3 text-center">{a.task_count}</td>
+                    <td className="px-4 py-3 text-center">
+                      <div className="flex items-center justify-center gap-2">
+                        <button onClick={() => handleApprove(a.id)} className="btn btn-success text-xs py-1.5">
+                          Approve
+                        </button>
+                        <button onClick={() => handleReject(a.id)} className="btn btn-outline text-xs py-1.5 text-red-500 border-red-200 hover:bg-red-50">
+                          Reject
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
 
       <div className="card overflow-hidden mb-6">
         <div className="px-4 py-3 border-b border-border bg-slate-50">
@@ -216,6 +284,18 @@ export default function AdminTasks() {
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-1">Task Count</label>
             <input type="number" min={1} value={taskCount} onChange={(e) => setTaskCount(Number(e.target.value))} className="input w-24" required />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-1">
+              Slack / Mail Link <span className="text-text-secondary font-normal">(optional)</span>
+            </label>
+            <input
+              type="url"
+              value={slackLink}
+              onChange={(e) => setSlackLink(e.target.value)}
+              className="input"
+              placeholder="https://slack.com/team/... or mailto:agent@example.com"
+            />
           </div>
           <div className="flex gap-2 justify-end pt-2">
             <button type="button" onClick={() => setAssignModal(false)} className="btn btn-outline">Cancel</button>

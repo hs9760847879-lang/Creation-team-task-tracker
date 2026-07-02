@@ -13,7 +13,7 @@ ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;
 -- Tasks table (task templates)
 CREATE TABLE IF NOT EXISTS tasks (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  title TEXT NOT NULL,
+  title TEXT NOT NULL UNIQUE,
   type TEXT NOT NULL CHECK (type IN ('default', 'custom')) DEFAULT 'custom',
   created_by UUID REFERENCES profiles(id),
   is_active BOOLEAN DEFAULT true,
@@ -22,12 +22,15 @@ CREATE TABLE IF NOT EXISTS tasks (
 
 ALTER TABLE tasks ENABLE ROW LEVEL SECURITY;
 
+-- Remove duplicate tasks (keep only the first entry for each title)
+DELETE FROM tasks WHERE id NOT IN (SELECT MIN(id) FROM tasks GROUP BY title);
+
 -- Assignments table (task-to-agent connections)
 CREATE TABLE IF NOT EXISTS assignments (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   agent_id UUID NOT NULL REFERENCES profiles(id) ON DELETE CASCADE,
   task_id UUID NOT NULL REFERENCES tasks(id) ON DELETE CASCADE,
-  status TEXT NOT NULL CHECK (status IN ('pending', 'in-progress', 'completed')) DEFAULT 'pending',
+  status TEXT NOT NULL CHECK (status IN ('pending', 'in-progress', 'completed', 'pending_approval')) DEFAULT 'pending',
   task_count INTEGER DEFAULT 1,
   registered_by_agent BOOLEAN DEFAULT false,
   started_at TIMESTAMPTZ,
@@ -144,4 +147,4 @@ INSERT INTO tasks (title, type, is_active) VALUES
   ('Commission', 'default', true),
   ('Policy Framing', 'default', true),
   ('Policy Update', 'default', true)
-ON CONFLICT DO NOTHING;
+ON CONFLICT (title) DO NOTHING;

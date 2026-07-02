@@ -35,8 +35,8 @@ export default function Sidebar() {
       } min-h-screen sticky top-0 left-0`}
     >
       <div className="flex items-center gap-2 px-4 h-16 border-b border-white/10">
-        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-400 to-indigo-600 flex items-center justify-center font-bold text-sm shrink-0">
-          E
+        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-400 to-indigo-600 flex items-center justify-center font-bold text-xs shrink-0">
+          CT
         </div>
         {!collapsed && (
           <span className="font-semibold text-sm tracking-wide">CREATION TEAM</span>

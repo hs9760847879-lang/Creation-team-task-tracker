@@ -154,6 +154,77 @@ export default function AdminDashboard() {
           )}
         </div>
       </div>
+
+      <div className="card p-6">
+        <h2 className="text-base font-semibold text-slate-900 mb-4">Agent Comparison</h2>
+        {loading ? (
+          <div className="flex items-center justify-center h-40">
+            <div className="animate-spin w-8 h-8 border-2 border-primary border-t-transparent rounded-full" />
+          </div>
+        ) : agentPerformance.length === 0 ? (
+          <div className="text-center py-10 text-text-secondary text-sm">No data for this period</div>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left px-4 py-3 font-medium text-text-secondary">Agent</th>
+                  <th className="text-center px-4 py-3 font-medium text-text-secondary">Total</th>
+                  <th className="text-center px-4 py-3 font-medium text-text-secondary">Completed</th>
+                  <th className="text-center px-4 py-3 font-medium text-text-secondary">Pending</th>
+                  <th className="text-center px-4 py-3 font-medium text-text-secondary">Rate</th>
+                  <th className="text-center px-4 py-3 font-medium text-text-secondary">Avg Time</th>
+                  <th className="text-center px-4 py-3 font-medium text-text-secondary">vs Avg</th>
+                </tr>
+              </thead>
+              <tbody>
+                {agentPerformance
+                  .sort((a, b) => b.completionRate - a.completionRate)
+                  .map((agent, i, arr) => {
+                    const teamAvg = arr.reduce((s, a) => s + (a.avgTime || 0), 0) / arr.filter((a) => a.avgTime).length
+                    const vsAvg = agent.avgTime
+                      ? teamAvg > 0
+                        ? Math.round(((teamAvg - agent.avgTime) / teamAvg) * 100)
+                        : 0
+                      : null
+                    const isTop = i === 0
+                    return (
+                      <tr key={agent.name} className="border-b border-border hover:bg-slate-50/50 transition-colors">
+                        <td className="px-4 py-3">
+                          <div className="flex items-center gap-2">
+                            {isTop && <span className="text-amber-500 text-xs">👑</span>}
+                            <span className="font-medium">{agent.name}</span>
+                          </div>
+                        </td>
+                        <td className="px-4 py-3 text-center">{agent.total}</td>
+                        <td className="px-4 py-3 text-center font-medium text-emerald-600">{agent.completed}</td>
+                        <td className="px-4 py-3 text-center text-text-secondary">{agent.total - agent.completed}</td>
+                        <td className="px-4 py-3 text-center">
+                          <div className="flex items-center justify-center gap-2">
+                            <div className="w-16 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                              <div className="h-full bg-gradient-to-r from-indigo-400 to-emerald-500 rounded-full" style={{ width: `${agent.completionRate}%` }} />
+                            </div>
+                            <span className="text-xs font-medium">{agent.completionRate}%</span>
+                          </div>
+                        </td>
+                        <td className="px-4 py-3 text-center text-text-secondary">{formatDuration(agent.avgTime)}</td>
+                        <td className="px-4 py-3 text-center">
+                          {vsAvg !== null ? (
+                            <span className={vsAvg >= 0 ? 'text-emerald-600 text-xs font-medium' : 'text-red-500 text-xs font-medium'}>
+                              {vsAvg >= 0 ? `${vsAvg}% faster` : `${Math.abs(vsAvg)}% slower`}
+                            </span>
+                          ) : (
+                            <span className="text-text-secondary text-xs">—</span>
+                          )}
+                        </td>
+                      </tr>
+                    )
+                  })}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
     </div>
   )
 }

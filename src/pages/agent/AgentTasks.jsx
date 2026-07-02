@@ -15,6 +15,7 @@ export default function AgentTasks() {
   const [registering, setRegistering] = useState(false)
   const [editingCount, setEditingCount] = useState(null)
   const [editValue, setEditValue] = useState(1)
+  const [registerSuccess, setRegisterSuccess] = useState(false)
 
   const fetchAssignments = useCallback(async () => {
     if (!user) return
@@ -73,7 +74,7 @@ export default function AgentTasks() {
     const { error } = await supabase.from('assignments').insert({
       agent_id: user.id,
       task_id: selectedTask,
-      status: 'pending',
+      status: 'pending_approval',
       task_count: 1,
       registered_by_agent: true,
     })
@@ -81,9 +82,13 @@ export default function AgentTasks() {
     if (!error) {
       setRegisterModal(false)
       setSelectedTask('')
+      setRegisterSuccess(true)
       fetchAssignments()
     }
   }
+
+  const activeAssignments = assignments.filter((a) => a.status !== 'pending_approval')
+  const pendingApproval = assignments.filter((a) => a.status === 'pending_approval')
 
   if (loading) {
     return (
@@ -111,6 +116,31 @@ export default function AgentTasks() {
         </button>
       </div>
 
+      {registerSuccess && (
+        <div className="mb-4 px-4 py-3 rounded-lg bg-amber-50 border border-amber-200 text-amber-800 text-sm flex items-center gap-2">
+          <span className="font-medium">✓</span>
+          Task registered successfully! It's pending admin approval. You'll see it here once approved.
+          <button onClick={() => setRegisterSuccess(false)} className="ml-auto text-amber-500 hover:text-amber-700 font-medium">Dismiss</button>
+        </div>
+      )}
+
+      {pendingApproval.length > 0 && (
+        <div className="card p-4 mb-4">
+          <h3 className="text-sm font-semibold text-slate-900 mb-2 flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-amber-400" />
+            Pending Approval ({pendingApproval.length})
+          </h3>
+          <div className="flex flex-wrap gap-2">
+            {pendingApproval.map((a) => (
+              <span key={a.id} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-50 text-amber-700 text-xs border border-amber-200">
+                {a.task?.title}
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
       <div className="card overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
@@ -122,18 +152,18 @@ export default function AgentTasks() {
                 <th className="text-center px-4 py-3 font-medium text-text-secondary">Count</th>
                 <th className="text-center px-4 py-3 font-medium text-text-secondary">Status</th>
                 <th className="text-center px-4 py-3 font-medium text-text-secondary">Time</th>
-                <th className="text-center px-4 py-3 font-medium text-text-secondary">Action</th>
+                <th className="text-center px-4 py-3 font-medium text-text-secondary">Submit</th>
               </tr>
             </thead>
             <tbody>
-              {assignments.length === 0 ? (
+              {activeAssignments.length === 0 ? (
                 <tr>
                   <td colSpan={7} className="text-center py-12 text-text-secondary">
                     No tasks assigned yet. Click "Register Task" to add one.
                   </td>
                 </tr>
               ) : (
-                assignments.map((a) => (
+                activeAssignments.map((a) => (
                   <tr key={a.id} className="border-b border-border hover:bg-slate-50/50 transition-colors">
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-2">
@@ -201,7 +231,7 @@ export default function AgentTasks() {
                     </td>
                     <td className="px-4 py-3 text-center">
                       <span className={cn('badge', getStatusBadgeColor(a.status))}>
-                        {a.status}
+                        {a.status === 'pending_approval' ? 'Pending Approval' : a.status}
                       </span>
                     </td>
                     <td className="px-4 py-3 text-center text-text-secondary text-xs">
