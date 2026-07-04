@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { supabase } from '../../lib/supabase'
 import { useAuth } from '../../hooks/useAuth'
 import { getStatusBadgeColor, formatDuration, cn } from '../../lib/utils'
-import { Plus, Send, Pencil, Trash2 } from 'lucide-react'
+import { Plus, Pencil, Trash2, Check, X } from 'lucide-react'
 import Modal from '../../components/ui/Modal'
 
 export default function AdminTasks() {
@@ -19,6 +19,8 @@ export default function AdminTasks() {
   const [slackLink, setSlackLink] = useState('')
   const [newTaskName, setNewTaskName] = useState('')
   const [submitting, setSubmitting] = useState(false)
+  const [editingCount, setEditingCount] = useState(null)
+  const [editValue, setEditValue] = useState(1)
 
   const fetchData = useCallback(async () => {
     const [aRes, tRes, agRes] = await Promise.all([
@@ -39,15 +41,12 @@ export default function AdminTasks() {
     if (!selectedAgent || !selectedTask) return
     setSubmitting(true)
 
-    if (slackLink.trim()) {
-      await supabase.from('profiles').update({ slack_link: slackLink.trim() }).eq('id', selectedAgent)
-    }
-
     const { error } = await supabase.from('assignments').insert({
       agent_id: selectedAgent,
       task_id: selectedTask,
       task_count: taskCount,
-      status: 'pending',
+      status: 'not_started',
+      mail_slack_link: slackLink.trim() || null,
     })
     setSubmitting(false)
     if (!error) {
@@ -56,6 +55,17 @@ export default function AdminTasks() {
       setSelectedTask('')
       setTaskCount(1)
       setSlackLink('')
+      fetchData()
+    }
+  }
+
+  async function handleEditCount(assignmentId) {
+    const { error } = await supabase
+      .from('assignments')
+      .update({ task_count: editValue })
+      .eq('id', assignmentId)
+    if (!error) {
+      setEditingCount(null)
       fetchData()
     }
   }
@@ -207,23 +217,52 @@ export default function AdminTasks() {
                       </div>
                     </td>
                     <td className="px-4 py-3">{a.task?.title || 'Unknown'}</td>
-                    <td className="px-4 py-3 text-center font-medium">{a.task_count}</td>
+                    <td className="px-4 py-3 text-center">
+                      {editingCount === a.id ? (
+                        <div className="flex items-center justify-center gap-1">
+                          <input
+                            type="number"
+                            min={1}
+                            value={editValue}
+                            onChange={(e) => setEditValue(Number(e.target.value))}
+                            className="input w-16 text-center text-sm"
+                            autoFocus
+                          />
+                          <button
+                            onClick={() => handleEditCount(a.id)}
+                            className="p-1 text-emerald-600 hover:bg-emerald-50 rounded"
+                          >
+                            <Check size={14} />
+                          </button>
+                          <button
+                            onClick={() => setEditingCount(null)}
+                            className="p-1 text-red-500 hover:bg-red-50 rounded"
+                          >
+                            <X size={14} />
+                          </button>
+                        </div>
+                      ) : (
+                        <button
+                          onClick={() => { setEditingCount(a.id); setEditValue(a.task_count) }}
+                          className="inline-flex items-center gap-1 hover:text-indigo-600 transition-colors"
+                        >
+                          <span className="font-medium">{a.task_count}</span>
+                          <Pencil size={12} className="opacity-40" />
+                        </button>
+                      )}
+                    </td>
                     <td className="px-4 py-3 text-center">
                       <span className={cn('badge', getStatusBadgeColor(a.status))}>
-                        {a.status}
+                        {a.status === 'pending_approval' ? 'Pending Approval' : a.status === 'not_started' ? 'Not Started' : a.status === 'need_help' ? 'Need Help' : a.status === 'waiting_on_kam' ? 'Waiting on KAM' : a.status}
                       </span>
                     </td>
                     <td className="px-4 py-3 text-center text-text-secondary">
                       {a.time_taken_minutes ? formatDuration(a.time_taken_minutes) : '—'}
                     </td>
                     <td className="px-4 py-3">
-                      {a.agent?.slack_link ? (
-                        <a href={a.agent.slack_link} target="_blank" rel="noopener noreferrer" className="text-indigo-600 hover:text-indigo-700 underline text-xs">
-                          {a.agent.slack_link.length > 20 ? a.agent.slack_link.slice(0, 20) + '…' : a.agent.slack_link}
-                        </a>
-                      ) : a.agent?.email ? (
-                        <a href={`mailto:${a.agent.email}`} className="text-indigo-600 hover:text-indigo-700 underline text-xs">
-                          {a.agent.email}
+                      {a.mail_slack_link ? (
+                        <a href={a.mail_slack_link} target="_blank" rel="noopener noreferrer" className="text-indigo-600 hover:text-indigo-700 underline text-xs">
+                          {a.mail_slack_link.length > 25 ? a.mail_slack_link.slice(0, 25) + '…' : a.mail_slack_link}
                         </a>
                       ) : (
                         <span className="text-text-secondary">—</span>

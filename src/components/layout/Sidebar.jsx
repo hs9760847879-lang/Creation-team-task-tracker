@@ -7,6 +7,8 @@ import {
   LogOut,
   ChevronLeft,
   ChevronRight,
+  BarChart3,
+  UserCheck,
 } from 'lucide-react'
 import { useState } from 'react'
 import { useAuth } from '../../hooks/useAuth'
@@ -20,6 +22,8 @@ const adminLinks = [
   { to: '/admin', label: 'Dashboard', icon: LayoutDashboard },
   { to: '/admin/tasks', label: 'Task Manager', icon: ListChecks },
   { to: '/admin/agents', label: 'Agents', icon: Users },
+  { to: '/admin/stats', label: 'Team Stats', icon: BarChart3 },
+  { to: '/admin/individual-performance', label: 'Individual Performance', icon: UserCheck },
 ]
 
 export default function Sidebar() {

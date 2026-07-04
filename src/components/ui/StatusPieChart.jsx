@@ -4,12 +4,20 @@ const COLORS = {
   completed: '#22c55e',
   'in-progress': '#f59e0b',
   pending: '#6366f1',
+  not_started: '#94a3b8',
+  need_help: '#ef4444',
+  waiting_on_kam: '#f97316',
+  pending_approval: '#a855f7',
 }
 
 const LABELS = {
   completed: 'Completed',
   'in-progress': 'In Progress',
   pending: 'Pending',
+  not_started: 'Not Started',
+  need_help: 'Need Help',
+  waiting_on_kam: 'Waiting on KAM',
+  pending_approval: 'Pending Approval',
 }
 
 export default function StatusPieChart({ data }) {

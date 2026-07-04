@@ -13,7 +13,7 @@ ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;
 -- Tasks table (task templates)
 CREATE TABLE IF NOT EXISTS tasks (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  title TEXT NOT NULL UNIQUE,
+  title TEXT NOT NULL,
   type TEXT NOT NULL CHECK (type IN ('default', 'custom')) DEFAULT 'custom',
   created_by UUID REFERENCES profiles(id),
   is_active BOOLEAN DEFAULT true,
@@ -22,8 +22,16 @@ CREATE TABLE IF NOT EXISTS tasks (
 
 ALTER TABLE tasks ENABLE ROW LEVEL SECURITY;
 
--- Remove duplicate tasks (keep only the first entry for each title)
-DELETE FROM tasks WHERE id NOT IN (SELECT MIN(id) FROM tasks GROUP BY title);
+-- Add unique constraint on title (idempotent)
+DO $$ BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_constraint WHERE conname = 'tasks_title_key'
+  ) THEN
+    -- Remove duplicate tasks first (keep only the first entry for each title)
+    DELETE FROM tasks WHERE id NOT IN (SELECT MIN(id::text)::uuid FROM tasks GROUP BY title);
+    ALTER TABLE tasks ADD CONSTRAINT tasks_title_key UNIQUE (title);
+  END IF;
+END $$;
 
 -- Assignments table (task-to-agent connections)
 CREATE TABLE IF NOT EXISTS assignments (

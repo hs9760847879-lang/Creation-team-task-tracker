@@ -8,6 +8,9 @@ import AgentTasks from './pages/agent/AgentTasks'
 import AdminDashboard from './pages/admin/AdminDashboard'
 import AdminTasks from './pages/admin/AdminTasks'
 import AdminAgents from './pages/admin/AdminAgents'
+import AdminStats from './pages/admin/AdminStats'
+import AdminStatsDetail from './pages/admin/AdminStatsDetail'
+import AdminIndividualPerformance from './pages/admin/AdminIndividualPerformance'
 
 export default function App() {
   return (
@@ -22,6 +25,9 @@ export default function App() {
               <Route path="/admin" element={<AdminDashboard />} />
               <Route path="/admin/tasks" element={<AdminTasks />} />
               <Route path="/admin/agents" element={<AdminAgents />} />
+              <Route path="/admin/stats" element={<AdminStats />} />
+              <Route path="/admin/stats/:metric" element={<AdminStatsDetail />} />
+              <Route path="/admin/individual-performance" element={<AdminIndividualPerformance />} />
             </Route>
           </Route>
           <Route path="*" element={<Navigate to="/login" replace />} />

@@ -23,6 +23,12 @@ export function getStatusBadgeColor(status) {
       return 'badge-info'
     case 'pending_approval':
       return 'badge-warning'
+    case 'need_help':
+      return 'badge-error'
+    case 'waiting_on_kam':
+      return 'badge-warning'
+    case 'not_started':
+      return 'badge-info'
     default:
       return 'badge-info'
   }

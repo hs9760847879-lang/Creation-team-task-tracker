@@ -1,0 +1,3621 @@
+[
+  {
+    "date": "2026-03-09",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 51,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-09",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 90,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-09",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 3,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-09",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 23,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-10",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 16,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-10",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 2,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-03-10",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 9,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-10",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 14,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-11",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 2,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-11",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 4,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-11",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 7,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-03-11",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 13,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-11",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 6,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-12",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 4,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-12",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 0,
+    "commission_created": 1,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-12",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 2
+  },
+  {
+    "date": "2026-03-12",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 2,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-12",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 7,
+    "properties_created": 2
+  },
+  {
+    "date": "2026-03-13",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 4,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-13",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 8,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-13",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 3,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-03-14",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 8,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-14",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 26,
+    "commission_created": 4,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-14",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 2
+  },
+  {
+    "date": "2026-03-16",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 4,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-16",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 2,
+    "commission_created": 3,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-03-16",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 10,
+    "commission_created": 2,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-16",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 9,
+    "properties_created": 6
+  },
+  {
+    "date": "2026-03-17",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 1,
+    "commission_created": 0,
+    "properties_created": 2
+  },
+  {
+    "date": "2026-03-17",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 2,
+    "commission_created": 2,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-17",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-03-17",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 2,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-17",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 5,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-03-18",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 4,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-18",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 0,
+    "commission_created": 3,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-18",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 16,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-18",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 8,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-18",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 12,
+    "properties_created": 2
+  },
+  {
+    "date": "2026-03-19",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 13,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-19",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 0,
+    "commission_created": 8,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-19",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 8,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-19",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 23,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-20",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 3,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-20",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 6,
+    "commission_created": 0,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-03-20",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 17,
+    "commission_created": 3,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-20",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-03-23",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 9,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-23",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 17,
+    "commission_created": 14,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-23",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 2,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-23",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 4,
+    "properties_created": 4
+  },
+  {
+    "date": "2026-03-23",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 4,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-23",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 2
+  },
+  {
+    "date": "2026-03-24",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 3,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-24",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 0,
+    "commission_created": 27,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-24",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 8,
+    "properties_created": 5
+  },
+  {
+    "date": "2026-03-24",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 3,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-24",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 5,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-03-25",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 34,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-25",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 0,
+    "commission_created": 32,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-25",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 59,
+    "commission_created": 50,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-25",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 11,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-03-25",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 45,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-25",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 23,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-26",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 6,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-26",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 0,
+    "commission_created": 28,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-26",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 5
+  },
+  {
+    "date": "2026-03-26",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 24,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-26",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 15,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-27",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 66,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-27",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 0,
+    "commission_created": 1,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-03-27",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 0,
+    "commission_created": 56,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-27",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 17,
+    "properties_created": 4
+  },
+  {
+    "date": "2026-03-27",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 27,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-27",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 3,
+    "properties_created": 4
+  },
+  {
+    "date": "2026-03-28",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 15,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-28",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 0,
+    "commission_created": 107,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-28",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 4,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-28",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 8,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-30",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 6,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-30",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 1,
+    "commission_created": 8,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-31",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 16,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-03-31",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 0,
+    "commission_created": 4,
+    "properties_created": 8
+  },
+  {
+    "date": "2026-04-01",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 4,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-01",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 0,
+    "commission_created": 3,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-01",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 1,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-01",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 8,
+    "properties_created": 2
+  },
+  {
+    "date": "2026-04-01",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 9,
+    "properties_created": 4
+  },
+  {
+    "date": "2026-04-02",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 44,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-02",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 2,
+    "commission_created": 9,
+    "properties_created": 2
+  },
+  {
+    "date": "2026-04-02",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 8,
+    "commission_created": 1,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-02",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 6,
+    "properties_created": 7
+  },
+  {
+    "date": "2026-04-02",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 4,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-02",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 4,
+    "properties_created": 4
+  },
+  {
+    "date": "2026-04-03",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 8,
+    "commission_created": 6,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-04-03",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 0,
+    "commission_created": 7,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-03",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 4
+  },
+  {
+    "date": "2026-04-04",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 0,
+    "commission_created": 1,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-04",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 1,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-04",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 3,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-04-04",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 2,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-04",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 4,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-06",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 31,
+    "commission_created": 2,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-06",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 2,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-04-06",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 2,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-06",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 2,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-04-07",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 4,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-07",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 1,
+    "commission_created": 12,
+    "properties_created": 13
+  },
+  {
+    "date": "2026-04-07",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 2,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-07",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 8,
+    "properties_created": 6
+  },
+  {
+    "date": "2026-04-07",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 1,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-07",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 6,
+    "properties_created": 9
+  },
+  {
+    "date": "2026-04-08",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 4,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-08",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 26,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-08",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 4,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-04-08",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 18,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-08",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 18,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-09",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 29,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-09",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 19,
+    "commission_created": 2,
+    "properties_created": 4
+  },
+  {
+    "date": "2026-04-09",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 12,
+    "commission_created": 11,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-09",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 3,
+    "properties_created": 6
+  },
+  {
+    "date": "2026-04-09",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 1,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-09",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 1,
+    "properties_created": 4
+  },
+  {
+    "date": "2026-04-10",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 198,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-10",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 6,
+    "commission_created": 120,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-10",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 21,
+    "commission_created": 9,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-10",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 7
+  },
+  {
+    "date": "2026-04-10",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 6
+  },
+  {
+    "date": "2026-04-11",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 7,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-11",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 0,
+    "commission_created": 2,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-11",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 2,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-11",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 4,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-13",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 234,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-13",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 22,
+    "commission_created": 216,
+    "properties_created": 5
+  },
+  {
+    "date": "2026-04-13",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 0,
+    "commission_created": 23,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-13",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 1,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-13",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 1,
+    "properties_created": 4
+  },
+  {
+    "date": "2026-04-14",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 8,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-14",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 0,
+    "commission_created": 8,
+    "properties_created": 6
+  },
+  {
+    "date": "2026-04-14",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 2
+  },
+  {
+    "date": "2026-04-15",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 73,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-15",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 0,
+    "commission_created": 48,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-15",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 7
+  },
+  {
+    "date": "2026-04-15",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 8,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-15",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 6,
+    "properties_created": 4
+  },
+  {
+    "date": "2026-04-16",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 0,
+    "commission_created": 31,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-16",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 16,
+    "properties_created": 5
+  },
+  {
+    "date": "2026-04-16",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 4,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-16",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 1,
+    "properties_created": 4
+  },
+  {
+    "date": "2026-04-17",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 152,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-17",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 12,
+    "commission_created": 12,
+    "properties_created": 4
+  },
+  {
+    "date": "2026-04-17",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 17,
+    "commission_created": 11,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-17",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 23,
+    "properties_created": 6
+  },
+  {
+    "date": "2026-04-17",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 1,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-17",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 2
+  },
+  {
+    "date": "2026-04-18",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 27,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-18",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 0,
+    "commission_created": 39,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-04-18",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 3,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-18",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 10,
+    "properties_created": 2
+  },
+  {
+    "date": "2026-04-18",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 22,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-18",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 5,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-20",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 52,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-20",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 0,
+    "commission_created": 17,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-20",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 3,
+    "commission_created": 1,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-20",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 3,
+    "properties_created": 11
+  },
+  {
+    "date": "2026-04-20",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 6,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-20",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 7,
+    "properties_created": 5
+  },
+  {
+    "date": "2026-04-21",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 21,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-21",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 5,
+    "commission_created": 18,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-21",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 15,
+    "properties_created": 5
+  },
+  {
+    "date": "2026-04-21",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 1,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-21",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 1,
+    "properties_created": 10
+  },
+  {
+    "date": "2026-04-22",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 2,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-22",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 3,
+    "commission_created": 3,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-22",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 5,
+    "properties_created": 5
+  },
+  {
+    "date": "2026-04-22",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 5,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-22",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 1,
+    "properties_created": 5
+  },
+  {
+    "date": "2026-04-23",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 1,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-23",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 11,
+    "commission_created": 1,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-23",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 23,
+    "properties_created": 6
+  },
+  {
+    "date": "2026-04-23",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 21,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-23",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 39,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-24",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 77,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-24",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 1,
+    "commission_created": 69,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-24",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 0,
+    "commission_created": 1,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-24",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 7,
+    "properties_created": 6
+  },
+  {
+    "date": "2026-04-24",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 3,
+    "properties_created": 6
+  },
+  {
+    "date": "2026-04-25",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 5,
+    "properties_created": 7
+  },
+  {
+    "date": "2026-04-25",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 9,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-25",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 7,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-27",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 34,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-27",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 9,
+    "commission_created": 2,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-27",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 13,
+    "properties_created": 9
+  },
+  {
+    "date": "2026-04-27",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 3,
+    "properties_created": 2
+  },
+  {
+    "date": "2026-04-28",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 25,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-28",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 3,
+    "commission_created": 18,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-28",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 4,
+    "commission_created": 3,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-28",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 10,
+    "properties_created": 6
+  },
+  {
+    "date": "2026-04-28",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 2
+  },
+  {
+    "date": "2026-04-29",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 14,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-29",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 0,
+    "commission_created": 8,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-29",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 3,
+    "properties_created": 4
+  },
+  {
+    "date": "2026-04-29",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 46,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-29",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 3,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-30",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 29,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-30",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 7,
+    "commission_created": 14,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-30",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 6,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-04-30",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 3,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-04-30",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 5,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-02",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 10,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-02",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 0,
+    "commission_created": 13,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-02",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 18,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-02",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 15,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-04",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 2,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-04",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 0,
+    "commission_created": 6,
+    "properties_created": 2
+  },
+  {
+    "date": "2026-05-04",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 0,
+    "commission_created": 20,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-04",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 3,
+    "properties_created": 7
+  },
+  {
+    "date": "2026-05-05",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 0,
+    "commission_created": 2,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-05-05",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 0,
+    "commission_created": 11,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-05",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 1,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-05",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 6,
+    "properties_created": 8
+  },
+  {
+    "date": "2026-05-06",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 20,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-06",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 0,
+    "commission_created": 20,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-05-06",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 4,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-06",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 7,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-05-07",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 15,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-07",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 1,
+    "commission_created": 23,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-07",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 4,
+    "commission_created": 1,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-07",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 7,
+    "properties_created": 8
+  },
+  {
+    "date": "2026-05-07",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 2,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-07",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 5,
+    "properties_created": 2
+  },
+  {
+    "date": "2026-05-08",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 6,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-08",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 0,
+    "commission_created": 20,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-08",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 1,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-08",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 3,
+    "properties_created": 5
+  },
+  {
+    "date": "2026-05-08",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 22,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-08",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 9,
+    "properties_created": 6
+  },
+  {
+    "date": "2026-05-09",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 186,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-09",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 31,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-05-09",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 1,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-09",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 1,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-11",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 1,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-11",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 2,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-11",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 6,
+    "properties_created": 5
+  },
+  {
+    "date": "2026-05-11",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 1,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-11",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 3,
+    "properties_created": 10
+  },
+  {
+    "date": "2026-05-12",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 13,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-12",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 0,
+    "commission_created": 9,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-12",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 2,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-12",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 1,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-05-13",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 2,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-13",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 0,
+    "commission_created": 1,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-13",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 31,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-13",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 20,
+    "properties_created": 2
+  },
+  {
+    "date": "2026-05-14",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 2,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-14",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 7,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-05-14",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 21,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-14",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 28,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-05-15",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 6,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-15",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 1,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-15",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 3,
+    "commission_created": 0,
+    "properties_created": 4
+  },
+  {
+    "date": "2026-05-15",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 12,
+    "properties_created": 10
+  },
+  {
+    "date": "2026-05-15",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 55,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-15",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 5,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-05-16",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 6,
+    "properties_created": 6
+  },
+  {
+    "date": "2026-05-16",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 2
+  },
+  {
+    "date": "2026-05-18",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 4,
+    "commission_created": 0,
+    "properties_created": 7
+  },
+  {
+    "date": "2026-05-18",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 1,
+    "properties_created": 5
+  },
+  {
+    "date": "2026-05-18",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 24,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-18",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 8,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-05-19",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 7,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-19",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 1,
+    "commission_created": 0,
+    "properties_created": 6
+  },
+  {
+    "date": "2026-05-19",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 8,
+    "properties_created": 6
+  },
+  {
+    "date": "2026-05-19",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 33,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-19",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 58,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-20",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 4,
+    "commission_created": 0,
+    "properties_created": 10
+  },
+  {
+    "date": "2026-05-20",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 11,
+    "properties_created": 6
+  },
+  {
+    "date": "2026-05-20",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 27,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-20",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 19,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-21",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 6,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-21",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 2,
+    "commission_created": 0,
+    "properties_created": 7
+  },
+  {
+    "date": "2026-05-21",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 18,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-05-21",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 15,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-21",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 16,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-21",
+    "agent_name": "Varun Dhopte",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-05-22",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 1,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-22",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 2,
+    "commission_created": 1,
+    "properties_created": 2
+  },
+  {
+    "date": "2026-05-22",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 8,
+    "properties_created": 8
+  },
+  {
+    "date": "2026-05-22",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 76,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-22",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 64,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-22",
+    "agent_name": "Varun Dhopte",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-05-23",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 11,
+    "properties_created": 4
+  },
+  {
+    "date": "2026-05-23",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 2,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-23",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 2,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-25",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 4
+  },
+  {
+    "date": "2026-05-25",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 29,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-25",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 15,
+    "properties_created": 5
+  },
+  {
+    "date": "2026-05-26",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 2,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-26",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 0,
+    "commission_created": 2,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-26",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 0,
+    "commission_created": 3,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-05-26",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 10,
+    "properties_created": 6
+  },
+  {
+    "date": "2026-05-26",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 150,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-26",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 14,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-26",
+    "agent_name": "Varun Dhopte",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 2
+  },
+  {
+    "date": "2026-05-27",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 3,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-27",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 22,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-05-27",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 25,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-27",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 20,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-28",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 2,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-28",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 4,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-28",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 10,
+    "commission_created": 2,
+    "properties_created": 6
+  },
+  {
+    "date": "2026-05-28",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 16,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-05-28",
+    "agent_name": "Varun Dhopte",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 4
+  },
+  {
+    "date": "2026-05-29",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 13,
+    "commission_created": 0,
+    "properties_created": 4
+  },
+  {
+    "date": "2026-05-29",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 39,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-29",
+    "agent_name": "Nandini Soni",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-05-29",
+    "agent_name": "Varun Dhopte",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-05-30",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 13,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-30",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 6,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-30",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 20,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-05-30",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 3,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-05-30",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 2,
+    "properties_created": 2
+  },
+  {
+    "date": "2026-05-30",
+    "agent_name": "Nandini Soni",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 2
+  },
+  {
+    "date": "2026-06-01",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 18,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-01",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 0,
+    "commission_created": 24,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-01",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 2,
+    "commission_created": 0,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-06-01",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 17,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-01",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 6,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-01",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 5,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-01",
+    "agent_name": "Varun Dhopte",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-06-02",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 11,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-02",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 0,
+    "commission_created": 20,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-02",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 3,
+    "commission_created": 0,
+    "properties_created": 4
+  },
+  {
+    "date": "2026-06-02",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 5,
+    "properties_created": 2
+  },
+  {
+    "date": "2026-06-02",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 35,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-02",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 15,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-02",
+    "agent_name": "Nandini Soni",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 6
+  },
+  {
+    "date": "2026-06-02",
+    "agent_name": "Varun Dhopte",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 7
+  },
+  {
+    "date": "2026-06-03",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 30,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-03",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 0,
+    "commission_created": 53,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-03",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 0,
+    "commission_created": 2,
+    "properties_created": 6
+  },
+  {
+    "date": "2026-06-03",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 12,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-03",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 44,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-03",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 22,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-03",
+    "agent_name": "Nandini Soni",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 6
+  },
+  {
+    "date": "2026-06-04",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 9,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-04",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 0,
+    "commission_created": 14,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-04",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 14,
+    "commission_created": 0,
+    "properties_created": 4
+  },
+  {
+    "date": "2026-06-04",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 26,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-06-04",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 26,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-04",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 15,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-04",
+    "agent_name": "Nandini Soni",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 6
+  },
+  {
+    "date": "2026-06-04",
+    "agent_name": "Varun Dhopte",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 6
+  },
+  {
+    "date": "2026-06-05",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 42,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-05",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 0,
+    "commission_created": 16,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-05",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 15,
+    "commission_created": 0,
+    "properties_created": 6
+  },
+  {
+    "date": "2026-06-05",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 38,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-05",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 101,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-05",
+    "agent_name": "Nandini Soni",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 6
+  },
+  {
+    "date": "2026-06-06",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-06-06",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 9,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-06-06",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-06-06",
+    "agent_name": "Nandini Soni",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-06-08",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 9,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-08",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 29,
+    "commission_created": 5,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-08",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 30,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-08",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 9,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-08",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 2,
+    "commission_created": 19,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-08",
+    "agent_name": "Nandini Soni",
+    "commission_updated": 0,
+    "commission_created": 1,
+    "properties_created": 2
+  },
+  {
+    "date": "2026-06-08",
+    "agent_name": "Varun Dhopte",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 4
+  },
+  {
+    "date": "2026-06-09",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 169,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-09",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 18,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-06-09",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 78,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-09",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 26,
+    "commission_created": 2,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-06-09",
+    "agent_name": "Nandini Soni",
+    "commission_updated": 0,
+    "commission_created": 17,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-09",
+    "agent_name": "Varun Dhopte",
+    "commission_updated": 1,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-10",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 1,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-10",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 20,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-10",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 3,
+    "commission_created": 9,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-10",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 2,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-10",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 3,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-10",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 36,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-10",
+    "agent_name": "Nandini Soni",
+    "commission_updated": 40,
+    "commission_created": 18,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-10",
+    "agent_name": "Varun Dhopte",
+    "commission_updated": 2,
+    "commission_created": 19,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-11",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 31,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-11",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 36,
+    "commission_created": 7,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-11",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 56,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-06-11",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 108,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-11",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 2,
+    "commission_created": 1,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-11",
+    "agent_name": "Nandini Soni",
+    "commission_updated": 87,
+    "commission_created": 2,
+    "properties_created": 5
+  },
+  {
+    "date": "2026-06-11",
+    "agent_name": "Varun Dhopte",
+    "commission_updated": 55,
+    "commission_created": 37,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-12",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 23,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-12",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 3,
+    "commission_created": 6,
+    "properties_created": 2
+  },
+  {
+    "date": "2026-06-12",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 154,
+    "commission_created": 18,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-12",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 57,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-06-12",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 157,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-12",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 48,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-12",
+    "agent_name": "Nandini Soni",
+    "commission_updated": 119,
+    "commission_created": 23,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-12",
+    "agent_name": "Varun Dhopte",
+    "commission_updated": 21,
+    "commission_created": 25,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-13",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 3,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-13",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 10,
+    "commission_created": 1,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-13",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 22,
+    "commission_created": 11,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-13",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 19,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-13",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 7,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-13",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 11,
+    "commission_created": 8,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-13",
+    "agent_name": "Nandini Soni",
+    "commission_updated": 45,
+    "commission_created": 8,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-13",
+    "agent_name": "Varun Dhopte",
+    "commission_updated": 1,
+    "commission_created": 42,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-06-15",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 7,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-15",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 11,
+    "commission_created": 5,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-06-15",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 108,
+    "commission_created": 8,
+    "properties_created": 4
+  },
+  {
+    "date": "2026-06-15",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 115,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-15",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 41,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-15",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 31,
+    "commission_created": 2,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-15",
+    "agent_name": "Nandini Soni",
+    "commission_updated": 0,
+    "commission_created": 14,
+    "properties_created": 2
+  },
+  {
+    "date": "2026-06-15",
+    "agent_name": "Varun Dhopte",
+    "commission_updated": 3,
+    "commission_created": 0,
+    "properties_created": 5
+  },
+  {
+    "date": "2026-06-16",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 30,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-16",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 6,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-16",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 75,
+    "commission_created": 6,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-16",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 40,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-16",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 1,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-16",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 4,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-16",
+    "agent_name": "Nandini Soni",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 7
+  },
+  {
+    "date": "2026-06-16",
+    "agent_name": "Varun Dhopte",
+    "commission_updated": 25,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-17",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 35,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-17",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 10,
+    "commission_created": 1,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-17",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 30,
+    "commission_created": 0,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-06-17",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 16,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-17",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 1,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-06-17",
+    "agent_name": "Nandini Soni",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 6
+  },
+  {
+    "date": "2026-06-17",
+    "agent_name": "Varun Dhopte",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 6
+  },
+  {
+    "date": "2026-06-18",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 58,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-18",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 8,
+    "commission_created": 1,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-18",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 12,
+    "commission_created": 1,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-06-18",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 26,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-18",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 2,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-18",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 3,
+    "commission_created": 1,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-18",
+    "agent_name": "Nandini Soni",
+    "commission_updated": 0,
+    "commission_created": 4,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-06-18",
+    "agent_name": "Varun Dhopte",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 6
+  },
+  {
+    "date": "2026-06-19",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 2,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-19",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 15,
+    "commission_created": 7,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-19",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 5,
+    "commission_created": 24,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-19",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 18,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-06-19",
+    "agent_name": "Nandini Soni",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 5
+  },
+  {
+    "date": "2026-06-19",
+    "agent_name": "Varun Dhopte",
+    "commission_updated": 10,
+    "commission_created": 0,
+    "properties_created": 2
+  },
+  {
+    "date": "2026-06-20",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 2,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-20",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 6,
+    "commission_created": 3,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-06-20",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 26,
+    "commission_created": 6,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-06-20",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 35,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-20",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 3,
+    "properties_created": 2
+  },
+  {
+    "date": "2026-06-20",
+    "agent_name": "Nandini Soni",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 2
+  },
+  {
+    "date": "2026-06-20",
+    "agent_name": "Varun Dhopte",
+    "commission_updated": 4,
+    "commission_created": 0,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-06-22",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 0,
+    "commission_created": 2,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-22",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 6,
+    "commission_created": 0,
+    "properties_created": 6
+  },
+  {
+    "date": "2026-06-22",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 13,
+    "properties_created": 2
+  },
+  {
+    "date": "2026-06-22",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 5,
+    "properties_created": 4
+  },
+  {
+    "date": "2026-06-22",
+    "agent_name": "Nandini Soni",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 5
+  },
+  {
+    "date": "2026-06-22",
+    "agent_name": "Varun Dhopte",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 5
+  },
+  {
+    "date": "2026-06-23",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 1,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-23",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 2,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-23",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 4,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-23",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 13,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-23",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 100,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-23",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 20,
+    "commission_created": 42,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-23",
+    "agent_name": "Nandini Soni",
+    "commission_updated": 0,
+    "commission_created": 12,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-24",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 12,
+    "commission_created": 0,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-06-24",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 21,
+    "commission_created": 2,
+    "properties_created": 4
+  },
+  {
+    "date": "2026-06-24",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 30,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-06-24",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 5,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-24",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 26,
+    "commission_created": 0,
+    "properties_created": 4
+  },
+  {
+    "date": "2026-06-24",
+    "agent_name": "Nandini Soni",
+    "commission_updated": 0,
+    "commission_created": 13,
+    "properties_created": 2
+  },
+  {
+    "date": "2026-06-24",
+    "agent_name": "Varun Dhopte",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 4
+  },
+  {
+    "date": "2026-06-25",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 12,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-25",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 27,
+    "commission_created": 14,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-25",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 70,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-25",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 2,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-25",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 1,
+    "commission_created": 1,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-06-25",
+    "agent_name": "Nandini Soni",
+    "commission_updated": 0,
+    "commission_created": 2,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-06-25",
+    "agent_name": "Varun Dhopte",
+    "commission_updated": 2,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-26",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 3,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-26",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 5,
+    "commission_created": 6,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-26",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 6,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-26",
+    "agent_name": "Varun Dhopte",
+    "commission_updated": 8,
+    "commission_created": 0,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-06-27",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-06-27",
+    "agent_name": "Nandini Soni",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 2
+  },
+  {
+    "date": "2026-06-27",
+    "agent_name": "Varun Dhopte",
+    "commission_updated": 4,
+    "commission_created": 0,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-06-29",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 5,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-29",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 0,
+    "commission_created": 21,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-29",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 50,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-29",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 2,
+    "commission_created": 52,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-29",
+    "agent_name": "Nandini Soni",
+    "commission_updated": 0,
+    "commission_created": 2,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-06-30",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 4,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-30",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 0,
+    "commission_created": 18,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-30",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 23,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-30",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 11,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-30",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 10,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-30",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 6,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-06-30",
+    "agent_name": "Varun Dhopte",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-07-01",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 2,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-07-01",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 9,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-07-01",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 41,
+    "commission_created": 7,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-07-01",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 41,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-07-01",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 46,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-07-01",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 11,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-07-01",
+    "agent_name": "Nandini Soni",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 4
+  },
+  {
+    "date": "2026-07-01",
+    "agent_name": "Varun Dhopte",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 2
+  },
+  {
+    "date": "2026-07-02",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 2,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-07-02",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 1,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-07-02",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 10,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-07-02",
+    "agent_name": "Ashwini Sathe",
+    "commission_updated": 0,
+    "commission_created": 20,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-07-02",
+    "agent_name": "Md Shams Tabrej Ansari",
+    "commission_updated": 29,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-07-02",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 35,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-07-02",
+    "agent_name": "Nandini Soni",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 1
+  },
+  {
+    "date": "2026-07-03",
+    "agent_name": "Himanshu Sharma",
+    "commission_updated": 2,
+    "commission_created": 0,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-07-03",
+    "agent_name": "Sanket Bhasme",
+    "commission_updated": 1,
+    "commission_created": 1,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-07-03",
+    "agent_name": "Gaurav Padale",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 3
+  },
+  {
+    "date": "2026-07-03",
+    "agent_name": "Chinmayee Choudhary",
+    "commission_updated": 0,
+    "commission_created": 20,
+    "properties_created": 0
+  },
+  {
+    "date": "2026-07-03",
+    "agent_name": "Nandini Soni",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 6
+  },
+  {
+    "date": "2026-07-03",
+    "agent_name": "Varun Dhopte",
+    "commission_updated": 0,
+    "commission_created": 0,
+    "properties_created": 4
+  }
+]

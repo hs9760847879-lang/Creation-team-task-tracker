@@ -12,7 +12,7 @@ export default function AgentOverview() {
   const [period, setPeriod] = useState('week')
   const [customStart, setCustomStart] = useState('')
   const [customEnd, setCustomEnd] = useState('')
-  const [stats, setStats] = useState({ total: 0, completed: 0, pending: 0, inProgress: 0, avgTime: null })
+  const [stats, setStats] = useState({ total: 0, completed: 0, pending: 0, inProgress: 0, notStarted: 0, needHelp: 0, waitingOnKam: 0, avgTime: null })
   const [chartData, setChartData] = useState([])
   const [loading, setLoading] = useState(true)
 
@@ -36,6 +36,9 @@ export default function AgentOverview() {
       const completed = data.filter((a) => a.status === 'completed')
       const pending = data.filter((a) => a.status === 'pending')
       const inProgress = data.filter((a) => a.status === 'in-progress')
+      const notStarted = data.filter((a) => a.status === 'not_started')
+      const needHelp = data.filter((a) => a.status === 'need_help')
+      const waitingOnKam = data.filter((a) => a.status === 'waiting_on_kam')
 
       const completedWithTime = completed.filter((a) => a.time_taken_minutes != null)
       const avgTime = completedWithTime.length
@@ -48,13 +51,19 @@ export default function AgentOverview() {
         completed: completed.length,
         pending: pending.length,
         inProgress: inProgress.length,
+        notStarted: notStarted.length,
+        needHelp: needHelp.length,
+        waitingOnKam: waitingOnKam.length,
         avgTime,
       })
 
       setChartData([
-        { status: 'completed', count: completed.length },
+        ...(notStarted.length ? [{ status: 'not_started', count: notStarted.length }] : []),
         { status: 'in-progress', count: inProgress.length },
-        { status: 'pending', count: pending.length },
+        ...(pending.length ? [{ status: 'pending', count: pending.length }] : []),
+        ...(needHelp.length ? [{ status: 'need_help', count: needHelp.length }] : []),
+        ...(waitingOnKam.length ? [{ status: 'waiting_on_kam', count: waitingOnKam.length }] : []),
+        ...(completed.length ? [{ status: 'completed', count: completed.length }] : []),
       ])
     }
     setLoading(false)
@@ -141,12 +150,24 @@ export default function AgentOverview() {
               />
             </div>
             <div className="flex items-center justify-between text-sm">
-              <span className="text-text-secondary">Pending</span>
-              <span className="font-semibold">{stats.pending}</span>
+              <span className="text-text-secondary">Not Started</span>
+              <span className="font-semibold">{stats.notStarted}</span>
             </div>
             <div className="flex items-center justify-between text-sm">
-              <span className="text-text-secondary">In progress</span>
+              <span className="text-text-secondary">In Progress</span>
               <span className="font-semibold">{stats.inProgress}</span>
+            </div>
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-text-secondary">Need Help</span>
+              <span className="font-semibold">{stats.needHelp}</span>
+            </div>
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-text-secondary">Waiting on KAM</span>
+              <span className="font-semibold">{stats.waitingOnKam}</span>
+            </div>
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-text-secondary">Pending</span>
+              <span className="font-semibold">{stats.pending}</span>
             </div>
           </div>
         </div>

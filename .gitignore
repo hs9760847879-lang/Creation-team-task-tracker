@@ -23,3 +23,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Personal files
+Himanshu_Sharma_Resume.pdf
+credential.json

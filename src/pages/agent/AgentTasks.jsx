@@ -16,6 +16,8 @@ export default function AgentTasks() {
   const [editingCount, setEditingCount] = useState(null)
   const [editValue, setEditValue] = useState(1)
   const [registerSuccess, setRegisterSuccess] = useState(false)
+  const [taskCount, setTaskCount] = useState(1)
+  const [slackLink, setSlackLink] = useState('')
 
   const fetchAssignments = useCallback(async () => {
     if (!user) return
@@ -75,13 +77,16 @@ export default function AgentTasks() {
       agent_id: user.id,
       task_id: selectedTask,
       status: 'pending_approval',
-      task_count: 1,
+      task_count: taskCount,
+      mail_slack_link: slackLink.trim() || null,
       registered_by_agent: true,
     })
     setRegistering(false)
     if (!error) {
       setRegisterModal(false)
       setSelectedTask('')
+      setTaskCount(1)
+      setSlackLink('')
       setRegisterSuccess(true)
       fetchAssignments()
     }
@@ -148,7 +153,7 @@ export default function AgentTasks() {
               <tr className="border-b border-border bg-slate-50">
                 <th className="text-left px-4 py-3 font-medium text-text-secondary">Agent</th>
                 <th className="text-left px-4 py-3 font-medium text-text-secondary">Task</th>
-                <th className="text-left px-4 py-3 font-medium text-text-secondary">Slack / Email</th>
+                <th className="text-left px-4 py-3 font-medium text-text-secondary">Mail/Slack Link</th>
                 <th className="text-center px-4 py-3 font-medium text-text-secondary">Count</th>
                 <th className="text-center px-4 py-3 font-medium text-text-secondary">Status</th>
                 <th className="text-center px-4 py-3 font-medium text-text-secondary">Time</th>
@@ -180,16 +185,16 @@ export default function AgentTasks() {
                       )}
                     </td>
                     <td className="px-4 py-3">
-                      {profile?.slack_link ? (
+                      {a.mail_slack_link ? (
                         <a
-                          href={profile.slack_link}
+                          href={a.mail_slack_link}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-indigo-600 hover:text-indigo-700 underline"
                         >
-                          {profile.slack_link.length > 25
-                            ? profile.slack_link.slice(0, 25) + '…'
-                            : profile.slack_link}
+                          {a.mail_slack_link.length > 25
+                            ? a.mail_slack_link.slice(0, 25) + '…'
+                            : a.mail_slack_link}
                         </a>
                       ) : (
                         <span className="text-text-secondary">—</span>
@@ -231,7 +236,7 @@ export default function AgentTasks() {
                     </td>
                     <td className="px-4 py-3 text-center">
                       <span className={cn('badge', getStatusBadgeColor(a.status))}>
-                        {a.status === 'pending_approval' ? 'Pending Approval' : a.status}
+                        {a.status === 'pending_approval' ? 'Pending Approval' : a.status === 'not_started' ? 'Not Started' : a.status === 'need_help' ? 'Need Help' : a.status === 'waiting_on_kam' ? 'Waiting on KAM' : a.status}
                       </span>
                     </td>
                     <td className="px-4 py-3 text-center text-text-secondary text-xs">
@@ -277,6 +282,27 @@ export default function AgentTasks() {
                 </option>
               ))}
             </select>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Task Count</label>
+            <input
+              type="number"
+              min={1}
+              value={taskCount}
+              onChange={(e) => setTaskCount(Number(e.target.value))}
+              className="input w-24"
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Mail/Slack Link <span className="text-text-secondary font-normal">(optional)</span></label>
+            <input
+              type="url"
+              value={slackLink}
+              onChange={(e) => setSlackLink(e.target.value)}
+              className="input"
+              placeholder="https://freshdesk.com/a/tickets/... or slack link"
+            />
           </div>
           <div className="flex gap-2 justify-end pt-2">
             <button

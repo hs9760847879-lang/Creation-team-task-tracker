@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { supabase } from '../../lib/supabase'
 import { formatDuration } from '../../lib/utils'
-import { Plus, Mail, MessageCircle, TrendingUp, CheckCircle, ListTodo } from 'lucide-react'
+import { Plus, MessageCircle, TrendingUp, CheckCircle, ListTodo } from 'lucide-react'
 import Modal from '../../components/ui/Modal'
 import StatCard from '../../components/ui/StatCard'
 
@@ -143,8 +143,7 @@ export default function AdminAgents() {
             <thead>
               <tr className="border-b border-border bg-slate-50">
                 <th className="text-left px-4 py-3 font-medium text-text-secondary">Agent</th>
-                <th className="text-left px-4 py-3 font-medium text-text-secondary">Email</th>
-                <th className="text-left px-4 py-3 font-medium text-text-secondary">Slack</th>
+                <th className="text-left px-4 py-3 font-medium text-text-secondary">Mail/Slack Link</th>
                 <th className="text-center px-4 py-3 font-medium text-text-secondary">Tasks</th>
                 <th className="text-center px-4 py-3 font-medium text-text-secondary">Completed</th>
                 <th className="text-center px-4 py-3 font-medium text-text-secondary">Avg. Time</th>
@@ -165,16 +164,10 @@ export default function AdminAgents() {
                       </div>
                     </td>
                     <td className="px-4 py-3">
-                      <a href={`mailto:${agent.email}`} className="text-indigo-600 hover:text-indigo-700 underline inline-flex items-center gap-1">
-                        <Mail size={12} />
-                        {agent.email}
-                      </a>
-                    </td>
-                    <td className="px-4 py-3">
                       {agent.slack_link ? (
                         <a href={agent.slack_link} target="_blank" rel="noopener noreferrer" className="text-indigo-600 hover:text-indigo-700 underline inline-flex items-center gap-1">
                           <MessageCircle size={12} />
-                          {agent.slack_link.length > 20 ? agent.slack_link.slice(0, 20) + '…' : agent.slack_link}
+                          {agent.slack_link.length > 25 ? agent.slack_link.slice(0, 25) + '…' : agent.slack_link}
                         </a>
                       ) : (
                         <span className="text-text-secondary">—</span>
