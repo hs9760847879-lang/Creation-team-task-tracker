@@ -57,15 +57,36 @@ async function getProcessedSet() {
   return new Set((data || []).map((r) => r.ticket_id))
 }
 
+async function isFirstRun() {
+  const { count } = await supabase.from('processed_tickets').select('*', { count: 'exact', head: true })
+  return count === 0
+}
+
+async function getExistingLinks() {
+  const { data } = await supabase
+    .from('assignments')
+    .select('mail_slack_link')
+    .not('mail_slack_link', 'is', null)
+  return new Set((data || []).map((r) => r.mail_slack_link))
+}
+
 async function run() {
   console.log('Polling Freshdesk for recently updated tickets...')
 
-  const since = new Date(Date.now() - 30 * 60 * 1000).toISOString()
+  const firstRun = await isFirstRun()
+  const lookbackMinutes = firstRun ? 7 * 24 * 60 : 30
+  const since = new Date(Date.now() - lookbackMinutes * 60 * 1000).toISOString()
+  console.log(firstRun ? 'First run — backfilling last 7 days' : 'Incremental run — checking last 30 minutes')
+
   const tickets = await fetchFreshdesk(`/tickets?updated_since=${encodeURIComponent(since)}&per_page=100&order_by=updated_at&order_type=desc`)
   console.log(`Found ${tickets.length} recently updated tickets`)
 
-  const [fdAgentsById, processed] = await Promise.all([getAgentsById(), getProcessedSet()])
-  console.log(`Agents in Freshdesk: ${fdAgentsById.size}, Already processed: ${processed.size}`)
+  const [fdAgentsById, processed, existingLinks] = await Promise.all([
+    getAgentsById(),
+    getProcessedSet(),
+    getExistingLinks(),
+  ])
+  console.log(`Agents in Freshdesk: ${fdAgentsById.size}, Already processed: ${processed.size}, Existing links: ${existingLinks.size}`)
 
   const { data: tasks } = await supabase.from('tasks').select('id, title').eq('is_active', true)
   const taskById = new Map((tasks || []).map((t) => [t.title, t.id]))
@@ -117,6 +138,12 @@ async function run() {
     }
 
     const ticketUrl = `https://${FRESHDESK_SUBDOMAIN}.freshdesk.com/a/tickets/${ticket.id}`
+
+    if (existingLinks.has(ticketUrl)) {
+      skipped++
+      await supabase.from('processed_tickets').insert({ ticket_id: ticket.id })
+      continue
+    }
 
     const { error } = await supabase.from('assignments').insert({
       agent_id: profile.id,
