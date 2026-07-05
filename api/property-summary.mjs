@@ -81,11 +81,12 @@ const POINT4_ASSIGNEES = [
 
 export default async function handler(req, res) {
   try {
-    const credJson = process.env.CREDENTIAL_JSON
-    if (!credJson) {
-      return res.status(500).json({ error: 'CREDENTIAL_JSON env var not set' })
+    const clientEmail = process.env.GOOGLE_SHEETS_CLIENT_EMAIL
+    const privateKey = process.env.GOOGLE_SHEETS_PRIVATE_KEY
+    if (!clientEmail || !privateKey) {
+      return res.status(500).json({ error: 'GOOGLE_SHEETS_CLIENT_EMAIL or GOOGLE_SHEETS_PRIVATE_KEY env vars not set' })
     }
-    const cred = JSON.parse(credJson)
+    const cred = { client_email: clientEmail, private_key: privateKey.replace(/\\n/g, '\n') }
 
     const token = await getAccessToken(cred)
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?access_token=${token}`
