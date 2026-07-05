@@ -9,6 +9,7 @@ import {
   ChevronRight,
   BarChart3,
   UserCheck,
+  Settings,
 } from 'lucide-react'
 import { useState } from 'react'
 import { useAuth } from '../../hooks/useAuth'
@@ -16,6 +17,7 @@ import { useAuth } from '../../hooks/useAuth'
 const agentLinks = [
   { to: '/overview', label: 'Overview', icon: LayoutDashboard },
   { to: '/tasks', label: 'My Tasks', icon: ListChecks },
+  { to: '/settings', label: 'Settings', icon: Settings },
 ]
 
 const adminLinks = [

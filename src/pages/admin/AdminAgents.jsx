@@ -14,6 +14,7 @@ export default function AdminAgents() {
   const [newName, setNewName] = useState('')
   const [newPassword, setNewPassword] = useState('')
   const [newSlack, setNewSlack] = useState('')
+  const [newFreshdeskId, setNewFreshdeskId] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState('')
 
@@ -65,12 +66,14 @@ export default function AdminAgents() {
       if (signUpError) throw signUpError
 
       if (data?.user) {
+        const freshdeskId = newFreshdeskId ? Number(newFreshdeskId) : null
         const { error: profileError } = await supabase.from('profiles').upsert({
           id: data.user.id,
           name: newName,
           email: newEmail,
           role: 'agent',
           slack_link: newSlack || null,
+          freshdesk_agent_id: freshdeskId,
         })
         if (profileError) throw profileError
       }
@@ -80,6 +83,7 @@ export default function AdminAgents() {
       setNewName('')
       setNewPassword('')
       setNewSlack('')
+      setNewFreshdeskId('')
       fetchData()
     } catch (err) {
       setError(err.message)
@@ -144,6 +148,7 @@ export default function AdminAgents() {
               <tr className="border-b border-border bg-slate-50">
                 <th className="text-left px-4 py-3 font-medium text-text-secondary">Agent</th>
                 <th className="text-left px-4 py-3 font-medium text-text-secondary">Mail/Slack Link</th>
+                <th className="text-center px-4 py-3 font-medium text-text-secondary">FD ID</th>
                 <th className="text-center px-4 py-3 font-medium text-text-secondary">Tasks</th>
                 <th className="text-center px-4 py-3 font-medium text-text-secondary">Completed</th>
                 <th className="text-center px-4 py-3 font-medium text-text-secondary">Avg. Time</th>
@@ -172,6 +177,9 @@ export default function AdminAgents() {
                       ) : (
                         <span className="text-text-secondary">—</span>
                       )}
+                    </td>
+                    <td className="px-4 py-3 text-center font-mono text-xs">
+                      {agent.freshdesk_agent_id || <span className="text-red-400">—</span>}
                     </td>
                     <td className="px-4 py-3 text-center font-medium">{s.total}</td>
                     <td className="px-4 py-3 text-center">
@@ -218,6 +226,11 @@ export default function AdminAgents() {
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-1">Temporary Password</label>
             <input type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} className="input" placeholder="Set a password" required />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Freshdesk Agent ID <span className="text-red-500">*</span></label>
+            <input type="number" value={newFreshdeskId} onChange={(e) => setNewFreshdeskId(e.target.value)} className="input" placeholder="e.g. 84045006004" required />
+            <p className="text-xs text-text-secondary mt-1">Found in Freshdesk profile URL: <code className="text-indigo-600">amberstudent.freshdesk.com/a/profiles/&lt;ID&gt;/edit</code></p>
           </div>
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-1">Slack / Contact Link (optional)</label>

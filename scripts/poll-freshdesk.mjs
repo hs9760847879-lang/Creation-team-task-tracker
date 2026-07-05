@@ -40,26 +40,13 @@ function matchSubject(subject) {
   return null
 }
 
-async function getAgentsById() {
-  const agents = await fetchFreshdesk('/agents?per_page=100')
-  const map = new Map()
-  for (const agent of agents) {
-    map.set(agent.id, {
-      name: agent.contact?.name?.trim(),
-      email: agent.contact?.email?.trim()?.toLowerCase(),
-    })
+async function getProcessedPairs() {
+  const { data } = await supabase.from('processed_tickets').select('ticket_id, responder_id')
+  const set = new Set()
+  for (const r of data || []) {
+    set.add(`${r.ticket_id}:${r.responder_id}`)
   }
-  return map
-}
-
-async function getProcessedSet() {
-  const { data } = await supabase.from('processed_tickets').select('ticket_id')
-  return new Set((data || []).map((r) => r.ticket_id))
-}
-
-async function isFirstRun() {
-  const { count } = await supabase.from('processed_tickets').select('*', { count: 'exact', head: true })
-  return count === 0
+  return set
 }
 
 async function getExistingLinks() {
@@ -68,6 +55,23 @@ async function getExistingLinks() {
     .select('mail_slack_link')
     .not('mail_slack_link', 'is', null)
   return new Set((data || []).map((r) => r.mail_slack_link))
+}
+
+async function getAgentIdMap() {
+  const { data } = await supabase
+    .from('profiles')
+    .select('id, freshdesk_agent_id')
+    .not('freshdesk_agent_id', 'is', null)
+  const map = new Map()
+  for (const p of data || []) {
+    map.set(p.freshdesk_agent_id, p.id)
+  }
+  return map
+}
+
+async function isFirstRun() {
+  const { count } = await supabase.from('processed_tickets').select('*', { count: 'exact', head: true })
+  return count === 0
 }
 
 async function run() {
@@ -81,37 +85,43 @@ async function run() {
   const tickets = await fetchFreshdesk(`/tickets?updated_since=${encodeURIComponent(since)}&per_page=100&order_by=updated_at&order_type=desc`)
   console.log(`Found ${tickets.length} recently updated tickets`)
 
-  const [fdAgentsById, processed, existingLinks] = await Promise.all([
-    getAgentsById(),
-    getProcessedSet(),
+  const [agentIdToProfile, processedPairs, existingLinks] = await Promise.all([
+    getAgentIdMap(),
+    getProcessedPairs(),
     getExistingLinks(),
   ])
-  console.log(`Agents in Freshdesk: ${fdAgentsById.size}, Already processed: ${processed.size}, Existing links: ${existingLinks.size}`)
+  console.log(`Agents with Freshdesk ID: ${agentIdToProfile.size}, Processed pairs: ${processedPairs.size}, Existing links: ${existingLinks.size}`)
 
   const { data: tasks } = await supabase.from('tasks').select('id, title').eq('is_active', true)
   const taskById = new Map((tasks || []).map((t) => [t.title, t.id]))
 
-  const { data: profiles } = await supabase.from('profiles').select('id, name, email')
-  const profilesByName = new Map()
-  const profilesByEmail = new Map()
-  for (const p of profiles || []) {
-    profilesByName.set(p.name?.trim(), p)
-    if (p.email) profilesByEmail.set(p.email?.trim()?.toLowerCase(), p)
+  if (agentIdToProfile.size === 0) {
+    console.warn('No agents have freshdesk_agent_id set. Import nothing.')
+    return
   }
 
   let created = 0
   let skipped = 0
 
   for (const ticket of tickets) {
-    if (processed.has(ticket.id)) {
+    const responderId = ticket.responder_id
+    const pairKey = `${ticket.id}:${responderId || 0}`
+
+    if (processedPairs.has(pairKey)) {
       skipped++
+      continue
+    }
+
+    if (!responderId || !agentIdToProfile.has(responderId)) {
+      skipped++
+      await supabase.from('processed_tickets').insert({ ticket_id: ticket.id, responder_id: responderId || 0 })
       continue
     }
 
     const taskTitle = matchSubject(ticket.subject)
     if (!taskTitle) {
       skipped++
-      await supabase.from('processed_tickets').insert({ ticket_id: ticket.id })
+      await supabase.from('processed_tickets').insert({ ticket_id: ticket.id, responder_id: responderId || 0 })
       continue
     }
 
@@ -119,34 +129,21 @@ async function run() {
     if (!taskId) {
       console.warn(`  Task type "${taskTitle}" not found in DB`)
       skipped++
-      await supabase.from('processed_tickets').insert({ ticket_id: ticket.id })
+      await supabase.from('processed_tickets').insert({ ticket_id: ticket.id, responder_id: responderId || 0 })
       continue
     }
 
-    let profile = null
-    if (ticket.responder_id) {
-      const fdAgent = fdAgentsById.get(ticket.responder_id)
-      if (fdAgent) {
-        profile = profilesByName.get(fdAgent.name) || profilesByEmail.get(fdAgent.email)
-      }
-    }
-
-    if (!profile) {
-      skipped++
-      await supabase.from('processed_tickets').insert({ ticket_id: ticket.id })
-      continue
-    }
-
+    const profileId = agentIdToProfile.get(responderId)
     const ticketUrl = `https://${FRESHDESK_SUBDOMAIN}.freshdesk.com/a/tickets/${ticket.id}`
 
     if (existingLinks.has(ticketUrl)) {
       skipped++
-      await supabase.from('processed_tickets').insert({ ticket_id: ticket.id })
+      await supabase.from('processed_tickets').insert({ ticket_id: ticket.id, responder_id: responderId || 0 })
       continue
     }
 
     const { error } = await supabase.from('assignments').insert({
-      agent_id: profile.id,
+      agent_id: profileId,
       task_id: taskId,
       status: 'not_started',
       task_count: 1,
@@ -158,13 +155,13 @@ async function run() {
       console.error(`  Failed to create assignment for ticket ${ticket.id}:`, error.message)
     } else {
       created++
-      console.log(`  Created: "${ticket.subject}" → ${profile.name} (${taskTitle})`)
+      console.log(`  Created: ticket #${ticket.id} "${ticket.subject}" → agent ${responderId} (${taskTitle})`)
     }
 
-    await supabase.from('processed_tickets').insert({ ticket_id: ticket.id })
+    await supabase.from('processed_tickets').insert({ ticket_id: ticket.id, responder_id: responderId })
   }
 
-  console.log(`Done. Created: ${created}, Skipped (already processed / no match): ${skipped}`)
+  console.log(`Done. Created: ${created}, Skipped: ${skipped}`)
 }
 
 run().catch((err) => {
