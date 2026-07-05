@@ -1,4 +1,3 @@
-import { readFileSync, existsSync } from 'fs'
 import { createPrivateKey, sign } from 'crypto'
 
 const SHEET_ID = '15jecJzOZm_TG6w9Le4gLysJzQy9NLAWhEDzgR7sLhME'
@@ -82,11 +81,11 @@ const POINT4_ASSIGNEES = [
 
 export default async function handler(req, res) {
   try {
-    const credPath = './credential.json'
-    if (!existsSync(credPath)) {
-      return res.status(500).json({ error: 'credential.json not found' })
+    const credJson = process.env.CREDENTIAL_JSON
+    if (!credJson) {
+      return res.status(500).json({ error: 'CREDENTIAL_JSON env var not set' })
     }
-    const cred = JSON.parse(readFileSync(credPath, 'utf-8'))
+    const cred = JSON.parse(credJson)
 
     const token = await getAccessToken(cred)
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?access_token=${token}`
