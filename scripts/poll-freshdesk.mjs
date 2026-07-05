@@ -32,8 +32,8 @@ async function fetchFreshdesk(path) {
   return res.json()
 }
 
-function matchSubject(subject) {
-  const lower = (subject || '').toLowerCase()
+function matchTaskType(type) {
+  const lower = (type || '').toLowerCase()
   for (const [keyword, taskTitle] of Object.entries(TASK_MAP)) {
     if (lower.includes(keyword)) return taskTitle
   }
@@ -118,7 +118,7 @@ async function run() {
       continue
     }
 
-    const taskTitle = matchSubject(ticket.subject)
+    const taskTitle = matchTaskType(ticket.type)
     if (!taskTitle) {
       skipped++
       await supabase.from('processed_tickets').insert({ ticket_id: ticket.id, responder_id: responderId || 0 })
