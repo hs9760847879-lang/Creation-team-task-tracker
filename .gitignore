@@ -27,3 +27,6 @@ dist-ssr
 # Personal files
 Himanshu_Sharma_Resume.pdf
 credential.json
+
+# Google service account credential
+credential.json

@@ -6,6 +6,7 @@ import Login from './pages/Login'
 import AgentOverview from './pages/agent/AgentOverview'
 import AgentTasks from './pages/agent/AgentTasks'
 import AgentSettings from './pages/agent/AgentSettings'
+import PropertySummary from './pages/agent/PropertySummary'
 import AdminDashboard from './pages/admin/AdminDashboard'
 import AdminTasks from './pages/admin/AdminTasks'
 import AdminAgents from './pages/admin/AdminAgents'
@@ -24,6 +25,7 @@ export default function App() {
               <Route path="/overview" element={<AgentOverview />} />
               <Route path="/tasks" element={<AgentTasks />} />
               <Route path="/settings" element={<AgentSettings />} />
+              <Route path="/property-summary" element={<PropertySummary />} />
               <Route path="/admin" element={<AdminDashboard />} />
               <Route path="/admin/tasks" element={<AdminTasks />} />
               <Route path="/admin/agents" element={<AdminAgents />} />

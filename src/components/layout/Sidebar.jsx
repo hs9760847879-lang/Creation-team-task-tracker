@@ -17,6 +17,7 @@ import { useAuth } from '../../hooks/useAuth'
 const agentLinks = [
   { to: '/overview', label: 'Overview', icon: LayoutDashboard },
   { to: '/tasks', label: 'My Tasks', icon: ListChecks },
+  { to: '/property-summary', label: 'Property Summary', icon: BarChart3 },
   { to: '/settings', label: 'Settings', icon: Settings },
 ]
 
@@ -75,9 +76,8 @@ export default function Sidebar() {
             {profile?.name?.charAt(0)?.toUpperCase() || 'U'}
           </div>
           {!collapsed && (
-            <div className="min-w-0 flex-1">
-              <p className="text-sm font-medium truncate">{profile?.name || 'User'}</p>
-              <p className="text-xs text-slate-400 capitalize">{profile?.role || 'agent'}</p>
+            <div>
+              <p>{profile?.name || 'User'}</p>
             </div>
           )}
         </div>
