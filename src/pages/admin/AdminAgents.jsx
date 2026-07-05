@@ -40,6 +40,11 @@ export default function AdminAgents() {
             total: assignments.length,
             completed: completed.length,
             pending: assignments.filter((a) => a.status === 'pending').length,
+            notStarted: assignments.filter((a) => a.status === 'not_started').length,
+            inProgress: assignments.filter((a) => a.status === 'in-progress').length,
+            needHelp: assignments.filter((a) => a.status === 'need_help').length,
+            waitingOnKam: assignments.filter((a) => a.status === 'waiting_on_kam').length,
+            pendingApproval: assignments.filter((a) => a.status === 'pending_approval').length,
             avgTime: withTime.length
               ? withTime.reduce((s, a) => s + a.time_taken_minutes, 0) / withTime.length
               : null,
@@ -157,7 +162,7 @@ export default function AdminAgents() {
             </thead>
             <tbody>
               {agents.map((agent) => {
-                const s = agentStats[agent.id] || { total: 0, completed: 0, pending: 0, avgTime: null }
+                const s = agentStats[agent.id] || { total: 0, completed: 0, pending: 0, notStarted: 0, inProgress: 0, needHelp: 0, waitingOnKam: 0, pendingApproval: 0, avgTime: null }
                 return (
                   <tr key={agent.id} className="border-b border-border hover:bg-slate-50/50 transition-colors">
                     <td className="px-4 py-3">
@@ -184,9 +189,14 @@ export default function AdminAgents() {
                     <td className="px-4 py-3 text-center font-medium">{s.total}</td>
                     <td className="px-4 py-3 text-center">
                       <span className="text-emerald-600 font-medium">{s.completed}</span>
-                      {s.pending > 0 && (
-                        <span className="text-text-secondary text-xs ml-1">({s.pending} pending)</span>
-                      )}
+                      <div className="flex flex-wrap justify-center gap-1 mt-0.5">
+                        {s.notStarted > 0 && <span className="text-[10px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-600">{s.notStarted} not started</span>}
+                        {s.inProgress > 0 && <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-50 text-amber-700">{s.inProgress} in progress</span>}
+                        {s.pending > 0 && <span className="text-[10px] px-1.5 py-0.5 rounded bg-blue-50 text-blue-700">{s.pending} pending</span>}
+                        {s.pendingApproval > 0 && <span className="text-[10px] px-1.5 py-0.5 rounded bg-purple-50 text-purple-700">{s.pendingApproval} awaiting approval</span>}
+                        {s.needHelp > 0 && <span className="text-[10px] px-1.5 py-0.5 rounded bg-red-50 text-red-700">{s.needHelp} need help</span>}
+                        {s.waitingOnKam > 0 && <span className="text-[10px] px-1.5 py-0.5 rounded bg-orange-50 text-orange-700">{s.waitingOnKam} waiting on KAM</span>}
+                      </div>
                     </td>
                     <td className="px-4 py-3 text-center text-text-secondary">
                       {formatDuration(s.avgTime)}

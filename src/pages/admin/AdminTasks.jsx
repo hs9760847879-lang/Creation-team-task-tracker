@@ -28,7 +28,12 @@ export default function AdminTasks() {
       supabase.from('tasks').select('*').eq('is_active', true).order('title'),
       supabase.from('profiles').select('*').eq('role', 'agent').order('name'),
     ])
-    if (aRes.data) setAssignments(aRes.data)
+    if (aRes.data) {
+      const sorted = [...aRes.data].sort((a, b) =>
+        (a.agent?.name || '').localeCompare(b.agent?.name || '')
+      )
+      setAssignments(sorted)
+    }
     if (tRes.data) setTasks(tRes.data)
     if (agRes.data) setAgents(agRes.data)
     setLoading(false)

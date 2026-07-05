@@ -39,6 +39,7 @@ export default function AgentOverview() {
       const notStarted = data.filter((a) => a.status === 'not_started')
       const needHelp = data.filter((a) => a.status === 'need_help')
       const waitingOnKam = data.filter((a) => a.status === 'waiting_on_kam')
+      const pendingApproval = data.filter((a) => a.status === 'pending_approval')
 
       const completedWithTime = completed.filter((a) => a.time_taken_minutes != null)
       const avgTime = completedWithTime.length
@@ -54,6 +55,7 @@ export default function AgentOverview() {
         notStarted: notStarted.length,
         needHelp: needHelp.length,
         waitingOnKam: waitingOnKam.length,
+        pendingApproval: pendingApproval.length,
         avgTime,
       })
 
@@ -63,6 +65,7 @@ export default function AgentOverview() {
         ...(pending.length ? [{ status: 'pending', count: pending.length }] : []),
         ...(needHelp.length ? [{ status: 'need_help', count: needHelp.length }] : []),
         ...(waitingOnKam.length ? [{ status: 'waiting_on_kam', count: waitingOnKam.length }] : []),
+        ...(pendingApproval.length ? [{ status: 'pending_approval', count: pendingApproval.length }] : []),
         ...(completed.length ? [{ status: 'completed', count: completed.length }] : []),
       ])
     }
@@ -168,6 +171,10 @@ export default function AgentOverview() {
             <div className="flex items-center justify-between text-sm">
               <span className="text-text-secondary">Pending</span>
               <span className="font-semibold">{stats.pending}</span>
+            </div>
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-text-secondary">Pending Approval</span>
+              <span className="font-semibold">{stats.pendingApproval}</span>
             </div>
           </div>
         </div>

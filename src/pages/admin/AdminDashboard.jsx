@@ -33,6 +33,10 @@ export default function AdminDashboard() {
       const completed = assignments.filter((a) => a.status === 'completed')
       const pending = assignments.filter((a) => a.status === 'pending')
       const inProgress = assignments.filter((a) => a.status === 'in-progress')
+      const notStarted = assignments.filter((a) => a.status === 'not_started')
+      const needHelp = assignments.filter((a) => a.status === 'need_help')
+      const waitingOnKam = assignments.filter((a) => a.status === 'waiting_on_kam')
+      const pendingApproval = assignments.filter((a) => a.status === 'pending_approval')
       const withTime = completed.filter((a) => a.time_taken_minutes != null)
       const avgTime = withTime.length
         ? withTime.reduce((s, a) => s + a.time_taken_minutes, 0) / withTime.length
@@ -48,9 +52,13 @@ export default function AdminDashboard() {
       })
 
       setChartData([
-        { status: 'completed', count: completed.length },
+        ...(notStarted.length ? [{ status: 'not_started', count: notStarted.length }] : []),
         { status: 'in-progress', count: inProgress.length },
-        { status: 'pending', count: pending.length },
+        ...(pending.length ? [{ status: 'pending', count: pending.length }] : []),
+        ...(pendingApproval.length ? [{ status: 'pending_approval', count: pendingApproval.length }] : []),
+        ...(needHelp.length ? [{ status: 'need_help', count: needHelp.length }] : []),
+        ...(waitingOnKam.length ? [{ status: 'waiting_on_kam', count: waitingOnKam.length }] : []),
+        ...(completed.length ? [{ status: 'completed', count: completed.length }] : []),
       ])
 
       const agentMap = {}

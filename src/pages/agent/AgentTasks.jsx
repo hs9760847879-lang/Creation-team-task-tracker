@@ -15,6 +15,8 @@ export default function AgentTasks() {
   const [registering, setRegistering] = useState(false)
   const [editingCount, setEditingCount] = useState(null)
   const [editValue, setEditValue] = useState(1)
+  const [editingTask, setEditingTask] = useState(null)
+  const [editTaskId, setEditTaskId] = useState('')
   const [registerSuccess, setRegisterSuccess] = useState(false)
   const [taskCount, setTaskCount] = useState(1)
   const [slackLink, setSlackLink] = useState('')
@@ -65,6 +67,18 @@ export default function AgentTasks() {
       .eq('id', assignmentId)
     if (!error) {
       setEditingCount(null)
+      fetchAssignments()
+    }
+  }
+
+  async function handleEditTask(assignmentId) {
+    if (!editTaskId) return
+    const { error } = await supabase
+      .from('assignments')
+      .update({ task_id: editTaskId })
+      .eq('id', assignmentId)
+    if (!error) {
+      setEditingTask(null)
       fetchAssignments()
     }
   }
@@ -178,10 +192,44 @@ export default function AgentTasks() {
                         <span className="font-medium">{profile?.name || 'You'}</span>
                       </div>
                     </td>
-                    <td className="px-4 py-3 max-w-[180px]">
-                      <span className="truncate block">{a.task?.title || 'Unknown'}</span>
-                      {a.registered_by_agent && (
-                        <span className="badge badge-info text-[10px] mt-0.5">Self-registered</span>
+                    <td className="px-4 py-3 max-w-[200px]">
+                      {editingTask === a.id ? (
+                        <div className="flex items-center gap-1">
+                          <select
+                            value={editTaskId}
+                            onChange={(e) => setEditTaskId(e.target.value)}
+                            className="input text-xs py-1 w-32"
+                            autoFocus
+                          >
+                            {tasks.map((t) => (
+                              <option key={t.id} value={t.id}>{t.title}</option>
+                            ))}
+                          </select>
+                          <button
+                            onClick={() => handleEditTask(a.id)}
+                            className="p-1 text-emerald-600 hover:bg-emerald-50 rounded"
+                          >
+                            <Check size={14} />
+                          </button>
+                          <button
+                            onClick={() => setEditingTask(null)}
+                            className="p-1 text-red-500 hover:bg-red-50 rounded"
+                          >
+                            <X size={14} />
+                          </button>
+                        </div>
+                      ) : (
+                        <>
+                          <button
+                            onClick={() => { setEditingTask(a.id); setEditTaskId(a.task_id) }}
+                            className="truncate block max-w-[140px] hover:text-indigo-600 transition-colors"
+                          >
+                            {a.task?.title || 'Unknown'}
+                          </button>
+                          {a.registered_by_agent && (
+                            <span className="badge badge-info text-[10px] mt-0.5">Self-registered</span>
+                          )}
+                        </>
                       )}
                     </td>
                     <td className="px-4 py-3">
