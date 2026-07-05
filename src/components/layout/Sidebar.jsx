@@ -3,7 +3,6 @@ import {
   LayoutDashboard,
   ListChecks,
   Users,
-  UserCircle,
   LogOut,
   ChevronLeft,
   ChevronRight,
