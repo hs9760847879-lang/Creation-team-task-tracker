@@ -16,12 +16,12 @@ import { useAuth } from '../../hooks/useAuth'
 const agentLinks = [
   { to: '/overview', label: 'Overview', icon: LayoutDashboard },
   { to: '/tasks', label: 'My Tasks', icon: ListChecks },
-  { to: '/property-summary', label: 'Property Summary', icon: BarChart3 },
   { to: '/settings', label: 'Settings', icon: Settings },
 ]
 
 const adminLinks = [
   { to: '/admin', label: 'Dashboard', icon: LayoutDashboard },
+  { to: '/property-summary', label: 'Property Summary', icon: BarChart3 },
   { to: '/admin/tasks', label: 'Task Manager', icon: ListChecks },
   { to: '/admin/agents', label: 'Agents', icon: Users },
   { to: '/admin/stats', label: 'Team Stats', icon: BarChart3 },
