@@ -15,9 +15,11 @@ if (!FRESHDESK_API_KEY || !SUPABASE_URL || !SUPABASE_SERVICE_KEY) {
 const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY)
 
 const TASK_MAP = {
-  commission: 'Commission',
+  'commission': 'Commission',
+  'commission update': 'Commission',
   'policy update': 'Policy Update',
   'property creation': 'Property Creation',
+  'property creation request': 'Property Creation',
 }
 
 async function fetchFreshdesk(path) {
