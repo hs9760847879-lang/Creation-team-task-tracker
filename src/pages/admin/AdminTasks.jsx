@@ -21,6 +21,7 @@ export default function AdminTasks() {
   const [submitting, setSubmitting] = useState(false)
   const [editingCount, setEditingCount] = useState(null)
   const [editValue, setEditValue] = useState(1)
+  const [editingStatus, setEditingStatus] = useState(null)
 
   const fetchData = useCallback(async () => {
     const [aRes, tRes, agRes] = await Promise.all([
@@ -73,6 +74,15 @@ export default function AdminTasks() {
       setEditingCount(null)
       fetchData()
     }
+  }
+
+  async function handleEditStatus(assignmentId, newStatus) {
+    setEditingStatus(null)
+    const { error } = await supabase
+      .from('assignments')
+      .update({ status: newStatus })
+      .eq('id', assignmentId)
+    if (!error) fetchData()
   }
 
   async function handleCreateTask(e) {
@@ -257,9 +267,30 @@ export default function AdminTasks() {
                       )}
                     </td>
                     <td className="px-4 py-3 text-center">
-                      <span className={cn('badge', getStatusBadgeColor(a.status))}>
-                        {a.status === 'pending_approval' ? 'Pending Approval' : a.status === 'not_started' ? 'Not Started' : a.status === 'need_help' ? 'Need Help' : a.status === 'waiting_on_kam' ? 'Waiting on KAM' : a.status}
-                      </span>
+                      {editingStatus === a.id ? (
+                        <select
+                          value={a.status}
+                          onChange={(e) => handleEditStatus(a.id, e.target.value)}
+                          onBlur={() => setEditingStatus(null)}
+                          className="input text-xs py-1 w-28"
+                          autoFocus
+                        >
+                          <option value="not_started">Not Started</option>
+                          <option value="in-progress">In Progress</option>
+                          <option value="pending">Pending</option>
+                          <option value="need_help">Need Help</option>
+                          <option value="waiting_on_kam">Waiting on KAM</option>
+                          <option value="pending_approval">Pending Approval</option>
+                          <option value="completed">Completed</option>
+                        </select>
+                      ) : (
+                        <button
+                          onClick={() => setEditingStatus(a.id)}
+                          className={cn('badge cursor-pointer hover:opacity-80 transition-opacity', getStatusBadgeColor(a.status))}
+                        >
+                          {a.status === 'pending_approval' ? 'Pending Approval' : a.status === 'not_started' ? 'Not Started' : a.status === 'need_help' ? 'Need Help' : a.status === 'waiting_on_kam' ? 'Waiting on KAM' : a.status}
+                        </button>
+                      )}
                     </td>
                     <td className="px-4 py-3 text-center text-text-secondary">
                       {a.time_taken_minutes ? formatDuration(a.time_taken_minutes) : '—'}

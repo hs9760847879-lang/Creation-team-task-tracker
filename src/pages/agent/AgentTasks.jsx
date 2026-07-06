@@ -17,6 +17,7 @@ export default function AgentTasks() {
   const [editValue, setEditValue] = useState(1)
   const [editingTask, setEditingTask] = useState(null)
   const [editTaskId, setEditTaskId] = useState('')
+  const [editingStatus, setEditingStatus] = useState(null)
   const [registerSuccess, setRegisterSuccess] = useState(false)
   const [taskCount, setTaskCount] = useState(1)
   const [slackLink, setSlackLink] = useState('')
@@ -81,6 +82,15 @@ export default function AgentTasks() {
       setEditingTask(null)
       fetchAssignments()
     }
+  }
+
+  async function handleEditStatus(assignmentId, newStatus) {
+    setEditingStatus(null)
+    const { error } = await supabase
+      .from('assignments')
+      .update({ status: newStatus })
+      .eq('id', assignmentId)
+    if (!error) fetchAssignments()
   }
 
   async function handleRegister(e) {
@@ -283,9 +293,27 @@ export default function AgentTasks() {
                       )}
                     </td>
                     <td className="px-4 py-3 text-center">
-                      <span className={cn('badge', getStatusBadgeColor(a.status))}>
-                        {a.status === 'pending_approval' ? 'Pending Approval' : a.status === 'not_started' ? 'Not Started' : a.status === 'need_help' ? 'Need Help' : a.status === 'waiting_on_kam' ? 'Waiting on KAM' : a.status}
-                      </span>
+                      {editingStatus === a.id ? (
+                        <select
+                          value={a.status}
+                          onChange={(e) => handleEditStatus(a.id, e.target.value)}
+                          onBlur={() => setEditingStatus(null)}
+                          className="input text-xs py-1 w-28"
+                          autoFocus
+                        >
+                          <option value="not_started">Not Started</option>
+                          <option value="in-progress">In Progress</option>
+                          <option value="need_help">Need Help</option>
+                          <option value="waiting_on_kam">Waiting on KAM</option>
+                        </select>
+                      ) : (
+                        <button
+                          onClick={() => setEditingStatus(a.id)}
+                          className={cn('badge cursor-pointer hover:opacity-80 transition-opacity', getStatusBadgeColor(a.status))}
+                        >
+                          {a.status === 'pending_approval' ? 'Pending Approval' : a.status === 'not_started' ? 'Not Started' : a.status === 'need_help' ? 'Need Help' : a.status === 'waiting_on_kam' ? 'Waiting on KAM' : a.status}
+                        </button>
+                      )}
                     </td>
                     <td className="px-4 py-3 text-center text-text-secondary text-xs">
                       {a.status === 'completed'
