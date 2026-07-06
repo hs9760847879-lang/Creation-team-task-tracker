@@ -1,5 +1,10 @@
 import { useState, useEffect } from 'react'
 
+function getDayLabel() {
+  if (new Date().getDay() === 1) return 'on Saturday'
+  return 'yesterday'
+}
+
 export default function PropertySummary() {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -24,9 +29,10 @@ export default function PropertySummary() {
 
   useEffect(() => { fetchSummary() }, [])
 
+  const dayLabel = getDayLabel()
   const points = data ? [
-    { label: `Number of properties created yesterday (${data.yesterday})`, value: data.point1 },
-    { label: `Number of properties activated yesterday (${data.yesterday})`, value: data.point2 },
+    { label: `Number of properties created ${dayLabel} (${data.yesterday})`, value: data.point1 },
+    { label: `Number of properties activated ${dayLabel} (${data.yesterday})`, value: data.point2 },
     { label: 'Number of properties pending on inventory to create', value: data.point3 },
     { label: 'Number of properties pending on KAM to create', value: data.point4 },
     { label: 'Number of properties pending on KAM to send the information', value: data.point5 },
