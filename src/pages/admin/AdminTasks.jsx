@@ -288,7 +288,7 @@ export default function AdminTasks() {
                           onClick={() => setEditingStatus(a.id)}
                           className={cn('badge cursor-pointer hover:opacity-80 transition-opacity', getStatusBadgeColor(a.status))}
                         >
-                          {a.status === 'pending_approval' ? 'Pending Approval' : a.status === 'not_started' ? 'Not Started' : a.status === 'need_help' ? 'Need Help' : a.status === 'waiting_on_kam' ? 'Waiting on KAM' : a.status}
+                          {a.status === 'pending_approval' ? 'Pending Approval' : a.status === 'not_started' ? 'Not Started' : a.status === 'in-progress' ? 'In Progress' : a.status === 'pending' ? 'Pending' : a.status === 'need_help' ? 'Need Help' : a.status === 'waiting_on_kam' ? 'Waiting on KAM' : a.status === 'completed' ? 'Completed' : a.status}
                         </button>
                       )}
                     </td>

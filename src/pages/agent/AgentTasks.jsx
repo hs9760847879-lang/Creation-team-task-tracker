@@ -298,20 +298,22 @@ export default function AgentTasks() {
                           value={a.status}
                           onChange={(e) => handleEditStatus(a.id, e.target.value)}
                           onBlur={() => setEditingStatus(null)}
-                          className="input text-xs py-1 w-28"
+                          className="input text-xs py-1 w-32"
                           autoFocus
                         >
                           <option value="not_started">Not Started</option>
                           <option value="in-progress">In Progress</option>
+                          <option value="pending">Pending</option>
                           <option value="need_help">Need Help</option>
                           <option value="waiting_on_kam">Waiting on KAM</option>
+                          <option value="pending_approval">Pending Approval</option>
                         </select>
                       ) : (
                         <button
                           onClick={() => setEditingStatus(a.id)}
                           className={cn('badge cursor-pointer hover:opacity-80 transition-opacity', getStatusBadgeColor(a.status))}
                         >
-                          {a.status === 'pending_approval' ? 'Pending Approval' : a.status === 'not_started' ? 'Not Started' : a.status === 'need_help' ? 'Need Help' : a.status === 'waiting_on_kam' ? 'Waiting on KAM' : a.status}
+                          {a.status === 'pending_approval' ? 'Pending Approval' : a.status === 'not_started' ? 'Not Started' : a.status === 'in-progress' ? 'In Progress' : a.status === 'pending' ? 'Pending' : a.status === 'need_help' ? 'Need Help' : a.status === 'waiting_on_kam' ? 'Waiting on KAM' : a.status === 'completed' ? 'Completed' : a.status}
                         </button>
                       )}
                     </td>
