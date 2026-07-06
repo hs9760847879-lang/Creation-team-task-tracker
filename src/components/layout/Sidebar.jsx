@@ -22,6 +22,7 @@ const agentLinks = [
 const adminLinks = [
   { to: '/admin', label: 'Dashboard', icon: LayoutDashboard },
   { to: '/property-summary', label: 'Property Summary', icon: BarChart3 },
+  { to: '/tasks', label: 'Admin Tasks', icon: ListChecks },
   { to: '/admin/tasks', label: 'Task Manager', icon: ListChecks },
   { to: '/admin/agents', label: 'Agents', icon: Users },
   { to: '/admin/stats', label: 'Team Stats', icon: BarChart3 },

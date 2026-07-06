@@ -1,80 +1,5 @@
 import { useState, useEffect } from 'react'
 
-const SHEET_ID = '15jecJzOZm_TG6w9Le4gLysJzQy9NLAWhEDzgR7sLhME'
-const RANGE = encodeURIComponent("creation data dump!T:X")
-
-const POINT4_ASSIGNEES = [
-  'Jerry', 'Arshiya', 'Sayali', 'Nikhil M', 'Disha', 'Munjal',
-  'Shubhi', 'Vamika', 'Shagun', 'Simran Saswani', 'Vihaan',
-]
-
-function getYesterday() {
-  const now = new Date()
-  const yesterday = new Date(now)
-  if (now.getDay() === 1) {
-    yesterday.setDate(yesterday.getDate() - 3)
-  } else {
-    yesterday.setDate(yesterday.getDate() - 1)
-  }
-  return yesterday
-}
-
-function formatDateDisplay(date) {
-  return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
-}
-
-function parseCellDate(val) {
-  if (!val) return null
-  const s = String(val).trim()
-  const m = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/)
-  if (m) return new Date(Number(m[3]), Number(m[2]) - 1, Number(m[1]))
-  const m2 = s.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/)
-  if (m2) return new Date(Number(m2[1]), Number(m2[2]) - 1, Number(m2[3]))
-  return null
-}
-
-function isSameDay(a, b) {
-  return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate()
-}
-
-function computeSummary(rows) {
-  const yesterdayDate = getYesterday()
-  const yesterdayDisplay = formatDateDisplay(yesterdayDate)
-
-  let point1 = 0, point2 = 0, point3 = 0, point4 = 0, point5 = 0
-
-  for (const row of rows) {
-    const colT = (row[0] || '').trim()
-    const colUDate = parseCellDate(row[1])
-    const colX = (row[4] || '').trim()
-
-    const isYesterday = colUDate && isSameDay(colUDate, yesterdayDate)
-    const hasAnyDate = colUDate !== null
-
-    if (isYesterday && ['Activation on hold (Confirmed by KAM)', 'Complete Info yet to be received from the KAM', 'Created- Live/ Incomplete Info'].includes(colT)) {
-      point1++
-    }
-
-    if (isYesterday && colT === 'Created- Live/ Incomplete Info') {
-      point2++
-    }
-
-    if (['Property Creation WIP', 'Not Started'].includes(colT)) {
-      point3++
-    }
-
-    if (hasAnyDate && colT === 'Property Creation WIP' && POINT4_ASSIGNEES.includes(colX)) {
-      point4++
-    }
-
-    if (hasAnyDate && colT === 'Complete Info yet to be received from the KAM') {
-      point5++
-    }
-  }
-
-  return { yesterday: yesterdayDisplay, point1, point2, point3, point4, point5 }
-}
-
 export default function PropertySummary() {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -84,21 +9,13 @@ export default function PropertySummary() {
     setLoading(true)
     setError('')
     try {
-      const apiKey = import.meta.env.VITE_GOOGLE_SHEETS_API_KEY
-      if (!apiKey) throw new Error('Google Sheets API key not configured')
-
-      const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${apiKey}`
-      const res = await fetch(url)
-      if (!res.ok) throw new Error(`API error: ${res.status}`)
-      const json = await res.json()
-
-      if (!json.values || json.values.length < 2) {
-        setData({ yesterday: formatDateDisplay(getYesterday()), point1: 0, point2: 0, point3: 0, point4: 0, point5: 0 })
-        setLoading(false)
-        return
+      const res = await fetch('/api/property-summary')
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({}))
+        throw new Error(errData.error || `API error: ${res.status}`)
       }
-
-      setData(computeSummary(json.values))
+      const json = await res.json()
+      setData(json)
     } catch (err) {
       setError(err.message)
     }
