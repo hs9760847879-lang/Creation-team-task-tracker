@@ -10,7 +10,7 @@ export default function AdminDashboard() {
   const [period, setPeriod] = useState('week')
   const [customStart, setCustomStart] = useState('')
   const [customEnd, setCustomEnd] = useState('')
-  const [stats, setStats] = useState({ total: 0, completed: 0, pending: 0, inProgress: 0, avgTime: null, agents: 0 })
+  const [stats, setStats] = useState({ total: 0, completed: 0, pending: 0, inProgress: 0, notStarted: 0, needHelp: 0, waitingOnKam: 0, pendingApproval: 0, avgTime: null, agents: 0 })
   const [chartData, setChartData] = useState([])
   const [agentPerformance, setAgentPerformance] = useState([])
   const [loading, setLoading] = useState(true)
@@ -47,6 +47,10 @@ export default function AdminDashboard() {
         completed: completed.length,
         pending: pending.length,
         inProgress: inProgress.length,
+        notStarted: notStarted.length,
+        needHelp: needHelp.length,
+        waitingOnKam: waitingOnKam.length,
+        pendingApproval: pendingApproval.length,
         avgTime,
         agents: agentCount || 0,
       })
@@ -117,6 +121,40 @@ export default function AdminDashboard() {
         <StatCard icon={CheckCircle} label="Completed" value={stats.completed} color="green" />
         <StatCard icon={Clock} label="In Progress" value={stats.inProgress} color="amber" />
         <StatCard icon={TrendingUp} label="Avg. Time" value={formatDuration(stats.avgTime)} color="indigo" />
+      </div>
+
+      <div className="card p-5 mb-6">
+        <h3 className="text-sm font-semibold text-slate-900 mb-3">Status Summary</h3>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3">
+          <div className="flex flex-col items-center p-3 rounded-lg bg-slate-50">
+            <span className="text-xs text-text-secondary">Not Started</span>
+            <span className="text-lg font-bold text-slate-700">{stats.notStarted}</span>
+          </div>
+          <div className="flex flex-col items-center p-3 rounded-lg bg-amber-50">
+            <span className="text-xs text-text-secondary">In Progress</span>
+            <span className="text-lg font-bold text-amber-700">{stats.inProgress}</span>
+          </div>
+          <div className="flex flex-col items-center p-3 rounded-lg bg-blue-50">
+            <span className="text-xs text-text-secondary">Pending</span>
+            <span className="text-lg font-bold text-blue-700">{stats.pending}</span>
+          </div>
+          <div className="flex flex-col items-center p-3 rounded-lg bg-purple-50">
+            <span className="text-xs text-text-secondary">Pending Approval</span>
+            <span className="text-lg font-bold text-purple-700">{stats.pendingApproval}</span>
+          </div>
+          <div className="flex flex-col items-center p-3 rounded-lg bg-red-50">
+            <span className="text-xs text-text-secondary">Need Help</span>
+            <span className="text-lg font-bold text-red-700">{stats.needHelp}</span>
+          </div>
+          <div className="flex flex-col items-center p-3 rounded-lg bg-orange-50">
+            <span className="text-xs text-text-secondary">Waiting on KAM</span>
+            <span className="text-lg font-bold text-orange-700">{stats.waitingOnKam}</span>
+          </div>
+          <div className="flex flex-col items-center p-3 rounded-lg bg-emerald-50">
+            <span className="text-xs text-text-secondary">Completed</span>
+            <span className="text-lg font-bold text-emerald-700">{stats.completed}</span>
+          </div>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
