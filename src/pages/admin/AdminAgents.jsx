@@ -83,6 +83,14 @@ export default function AdminAgents() {
         if (profileError) throw profileError
       }
 
+      if (freshdeskId) {
+        supabase.functions.invoke('poll-freshdesk', {
+          body: { backfillAgentId: Number(freshdeskId) },
+        }).then(({ error: backfillErr }) => {
+          if (backfillErr) console.error('Backfill error:', backfillErr)
+        })
+      }
+
       setInviteModal(false)
       setNewEmail('')
       setNewName('')

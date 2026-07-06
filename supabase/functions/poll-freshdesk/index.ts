@@ -31,16 +31,14 @@ async function fetchFreshdesk(path: string) {
   return res.json()
 }
 
-async function run() {
-  const supabaseUrl = Deno.env.get('SUPABASE_URL')!
-  const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
-  const supabase = createClient(supabaseUrl, supabaseKey)
+interface RunOptions {
+  lookbackMinutes: number
+  targetAgentId?: number
+}
 
-  const { count } = await supabase.from('processed_tickets').select('*', { count: 'exact', head: true })
-  const firstRun = count === 0
-  const lookbackMinutes = firstRun ? 7 * 24 * 60 : 30
-  const since = new Date(Date.now() - lookbackMinutes * 60 * 1000).toISOString()
-  console.log(firstRun ? 'First run — backfilling last 7 days' : 'Incremental run — checking last 30 minutes')
+async function runPoll(supabase: ReturnType<typeof createClient>, opts: RunOptions) {
+  const since = new Date(Date.now() - opts.lookbackMinutes * 60 * 1000).toISOString()
+  console.log(`Fetching tickets updated since ${since}`)
 
   const perPage = 100
   const allTickets: any[] = []
@@ -55,16 +53,28 @@ async function run() {
   }
   console.log(`Found ${allTickets.length} recently updated tickets`)
 
-  const { data: agentData } = await supabase
-    .from('profiles')
-    .select('id, freshdesk_agent_id')
-    .not('freshdesk_agent_id', 'is', null)
-  const agentIdToProfile = new Map<number, string>()
-  for (const p of agentData || []) agentIdToProfile.set(p.freshdesk_agent_id, p.id)
-  console.log(`Agents with FD ID: ${agentIdToProfile.size}`)
+  let agentIdToProfile: Map<number, string>
+  if (opts.targetAgentId) {
+    const { data } = await supabase
+      .from('profiles')
+      .select('id, freshdesk_agent_id')
+      .eq('freshdesk_agent_id', opts.targetAgentId)
+      .single()
+    agentIdToProfile = new Map()
+    if (data) agentIdToProfile.set(data.freshdesk_agent_id, data.id)
+    console.log(`Backfill target: FD ID ${opts.targetAgentId} → profile ${data?.id || 'not found'}`)
+  } else {
+    const { data } = await supabase
+      .from('profiles')
+      .select('id, freshdesk_agent_id')
+      .not('freshdesk_agent_id', 'is', null)
+    agentIdToProfile = new Map()
+    for (const p of data || []) agentIdToProfile.set(p.freshdesk_agent_id, p.id)
+    console.log(`Agents with FD ID: ${agentIdToProfile.size}`)
+  }
 
   if (agentIdToProfile.size === 0) {
-    console.warn('No agents have freshdesk_agent_id set. Nothing to do.')
+    console.warn('No matching agents with freshdesk_agent_id set. Nothing to do.')
     return { created: 0, skipped: 0 }
   }
 
@@ -86,6 +96,9 @@ async function run() {
 
   for (const ticket of allTickets) {
     const internalAgentId: number | null = ticket.internal_agent_id
+
+    if (opts.targetAgentId && internalAgentId !== opts.targetAgentId) continue
+
     const pairKey = `${ticket.id}:${internalAgentId || 0}`
 
     if (processedPairs.has(pairKey)) {
@@ -147,7 +160,39 @@ async function run() {
 }
 
 serve(async (req) => {
+  const supabaseUrl = Deno.env.get('SUPABASE_URL')!
+  const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
+  const supabase = createClient(supabaseUrl, supabaseKey)
+
   const url = new URL(req.url)
+
+  if (req.method === 'POST') {
+    try {
+      const body = await req.json()
+      if (!body.backfillAgentId) {
+        return new Response(JSON.stringify({ error: 'backfillAgentId required' }), {
+          status: 400,
+          headers: { 'Content-Type': 'application/json' },
+        })
+      }
+
+      const result = await runPoll(supabase, {
+        lookbackMinutes: 7 * 24 * 60,
+        targetAgentId: Number(body.backfillAgentId),
+      })
+      return new Response(JSON.stringify(result), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      })
+    } catch (err) {
+      console.error('Backfill error:', err)
+      return new Response(JSON.stringify({ error: err.message }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      })
+    }
+  }
+
   const token = url.searchParams.get('token')
   const expected = Deno.env.get('CRON_SECRET')
 
@@ -159,7 +204,7 @@ serve(async (req) => {
   }
 
   try {
-    const result = await run()
+    const result = await runPoll(supabase, { lookbackMinutes: 30 })
     return new Response(JSON.stringify(result), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },

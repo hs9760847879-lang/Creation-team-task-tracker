@@ -30,6 +30,11 @@ export default function AgentSettings() {
     if (error) {
       setMessage({ type: 'error', text: error.message })
     } else {
+      supabase.functions.invoke('poll-freshdesk', {
+        body: { backfillAgentId: Number(freshdeskId) },
+      }).then(({ error: backfillErr }) => {
+        if (backfillErr) console.error('Backfill error:', backfillErr)
+      })
       setMessage({ type: 'success', text: 'Freshdesk ID saved! Tickets will be assigned to you automatically.' })
     }
   }
