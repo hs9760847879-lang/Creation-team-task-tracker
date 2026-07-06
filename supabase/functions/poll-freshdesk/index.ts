@@ -159,7 +159,17 @@ async function runPoll(supabase: ReturnType<typeof createClient>, opts: RunOptio
   return { created, skipped }
 }
 
+const CORS_HEADERS = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+  'Access-Control-Allow-Headers': 'Authorization, Content-Type',
+}
+
 serve(async (req) => {
+  if (req.method === 'OPTIONS') {
+    return new Response(null, { status: 200, headers: CORS_HEADERS })
+  }
+
   const supabaseUrl = Deno.env.get('SUPABASE_URL')!
   const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
   const supabase = createClient(supabaseUrl, supabaseKey)
@@ -172,7 +182,7 @@ serve(async (req) => {
       if (!body.backfillAgentId) {
         return new Response(JSON.stringify({ error: 'backfillAgentId required' }), {
           status: 400,
-          headers: { 'Content-Type': 'application/json' },
+          headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
         })
       }
 
@@ -182,13 +192,13 @@ serve(async (req) => {
       })
       return new Response(JSON.stringify(result), {
         status: 200,
-        headers: { 'Content-Type': 'application/json' },
+        headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
       })
     } catch (err) {
       console.error('Backfill error:', err)
       return new Response(JSON.stringify({ error: err.message }), {
         status: 500,
-        headers: { 'Content-Type': 'application/json' },
+        headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
       })
     }
   }
@@ -199,7 +209,7 @@ serve(async (req) => {
   if (!token || token !== expected) {
     return new Response(JSON.stringify({ error: 'Unauthorized' }), {
       status: 401,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
     })
   }
 
@@ -207,13 +217,13 @@ serve(async (req) => {
     const result = await runPoll(supabase, { lookbackMinutes: 30 })
     return new Response(JSON.stringify(result), {
       status: 200,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
     })
   } catch (err) {
     console.error('Fatal error:', err)
     return new Response(JSON.stringify({ error: err.message }), {
       status: 500,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
     })
   }
 })
