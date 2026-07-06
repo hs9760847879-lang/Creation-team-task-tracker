@@ -60,13 +60,13 @@ export default function AgentOverview() {
       })
 
       setChartData([
-        ...(notStarted.length ? [{ status: 'not_started', count: notStarted.length }] : []),
+        { status: 'not_started', count: notStarted.length },
         { status: 'in-progress', count: inProgress.length },
-        ...(pending.length ? [{ status: 'pending', count: pending.length }] : []),
-        ...(needHelp.length ? [{ status: 'need_help', count: needHelp.length }] : []),
-        ...(waitingOnKam.length ? [{ status: 'waiting_on_kam', count: waitingOnKam.length }] : []),
-        ...(pendingApproval.length ? [{ status: 'pending_approval', count: pendingApproval.length }] : []),
-        ...(completed.length ? [{ status: 'completed', count: completed.length }] : []),
+        { status: 'pending', count: pending.length },
+        { status: 'need_help', count: needHelp.length },
+        { status: 'waiting_on_kam', count: waitingOnKam.length },
+        { status: 'pending_approval', count: pendingApproval.length },
+        { status: 'completed', count: completed.length },
       ])
     }
     setLoading(false)

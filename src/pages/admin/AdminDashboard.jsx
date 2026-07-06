@@ -52,13 +52,13 @@ export default function AdminDashboard() {
       })
 
       setChartData([
-        ...(notStarted.length ? [{ status: 'not_started', count: notStarted.length }] : []),
+        { status: 'not_started', count: notStarted.length },
         { status: 'in-progress', count: inProgress.length },
-        ...(pending.length ? [{ status: 'pending', count: pending.length }] : []),
-        ...(pendingApproval.length ? [{ status: 'pending_approval', count: pendingApproval.length }] : []),
-        ...(needHelp.length ? [{ status: 'need_help', count: needHelp.length }] : []),
-        ...(waitingOnKam.length ? [{ status: 'waiting_on_kam', count: waitingOnKam.length }] : []),
-        ...(completed.length ? [{ status: 'completed', count: completed.length }] : []),
+        { status: 'pending', count: pending.length },
+        { status: 'pending_approval', count: pendingApproval.length },
+        { status: 'need_help', count: needHelp.length },
+        { status: 'waiting_on_kam', count: waitingOnKam.length },
+        { status: 'completed', count: completed.length },
       ])
 
       const agentMap = {}
