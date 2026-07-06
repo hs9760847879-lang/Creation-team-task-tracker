@@ -12,7 +12,7 @@ function getYesterday() {
   const now = new Date()
   const yesterday = new Date(now)
   if (now.getDay() === 1) {
-    yesterday.setDate(yesterday.getDate() - 3)
+    yesterday.setDate(yesterday.getDate() - 2)
   } else {
     yesterday.setDate(yesterday.getDate() - 1)
   }
