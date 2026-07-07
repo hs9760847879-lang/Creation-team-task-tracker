@@ -26,8 +26,8 @@ function formatDateDisplay(date) {
 function parseCellDate(val) {
   if (!val) return null
   const s = String(val).trim()
-  const m = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/)
-  if (m) return new Date(Number(m[3]), Number(m[2]) - 1, Number(m[1]))
+    const m = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/)
+    if (m) return new Date(Number(m[3]), Number(m[1]) - 1, Number(m[2]))
   const m2 = s.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/)
   if (m2) return new Date(Number(m2[1]), Number(m2[2]) - 1, Number(m2[3]))
   return null
