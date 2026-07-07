@@ -46,16 +46,18 @@ function computeSummary(rows) {
   for (const row of rows) {
     const colT = (row[0] || '').trim()
     const colUDate = parseCellDate(row[1])
+    const colVDate = parseCellDate(row[2])
     const colX = (row[4] || '').trim()
 
     const isYesterday = colUDate && isSameDay(colUDate, yesterdayDate)
+    const isYesterdayV = colVDate && isSameDay(colVDate, yesterdayDate)
     const hasAnyDate = colUDate !== null
 
     if (isYesterday && ['Activation on hold (Confirmed by KAM)', 'Complete Info yet to be received from the KAM', 'Created- Live/ Incomplete Info'].includes(colT)) {
       point1++
     }
 
-    if (isYesterday && colT === 'Created- Live/ Incomplete Info') {
+    if (isYesterdayV && colT === 'Created- Live/ Incomplete Info') {
       point2++
     }
 
