@@ -15,7 +15,7 @@ export function ProtectedRoute() {
 
   if (!user) return <Navigate to="/login" state={{ from: location }} replace />
 
-  const adminRoutes = ['/admin', '/admin/tasks', '/admin/agents', '/property-summary']
+  const adminRoutes = ['/admin', '/admin/tasks', '/admin/agents', '/admin/maintenance', '/property-summary']
   const isAdminRoute = adminRoutes.some((route) => location.pathname.startsWith(route))
 
   if (isAdminRoute && profile?.role !== 'admin') {

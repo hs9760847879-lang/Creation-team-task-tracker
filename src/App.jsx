@@ -13,6 +13,7 @@ import AdminAgents from './pages/admin/AdminAgents'
 import AdminStats from './pages/admin/AdminStats'
 import AdminStatsDetail from './pages/admin/AdminStatsDetail'
 import AdminIndividualPerformance from './pages/admin/AdminIndividualPerformance'
+import Maintenance from './pages/admin/Maintenance'
 
 export default function App() {
   return (
@@ -32,6 +33,7 @@ export default function App() {
               <Route path="/admin/stats" element={<AdminStats />} />
               <Route path="/admin/stats/:metric" element={<AdminStatsDetail />} />
               <Route path="/admin/individual-performance" element={<AdminIndividualPerformance />} />
+              <Route path="/admin/maintenance" element={<Maintenance />} />
             </Route>
           </Route>
           <Route path="*" element={<Navigate to="/login" replace />} />

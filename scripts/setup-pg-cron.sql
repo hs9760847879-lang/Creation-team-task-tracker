@@ -1,18 +1,19 @@
 -- Run this in Supabase SQL Editor (https://supabase.com/dashboard/project/ilrzyvrxxxtiwfoupera/sql)
--- BEFORE running: replace YOUR_CRON_SECRET with the value you set for CRON_SECRET in Edge Function secrets
 
 -- Enable required extensions
 CREATE EXTENSION IF NOT EXISTS pg_cron;
 CREATE EXTENSION IF NOT EXISTS pg_net;
 
--- Schedule poll-freshdesk every 15 minutes
--- IMPORTANT: Replace YOUR_CRON_SECRET below with the actual CRON_SECRET value
+-- Remove old schedule if exists (had wrong token)
+SELECT cron.unschedule('poll-freshdesk');
+
+-- Schedule poll-freshdesk every 15 minutes with correct CRON_SECRET
 SELECT cron.schedule(
   'poll-freshdesk',
   '*/15 * * * *',
   $$
   SELECT net.http_get(
-    url:='https://ilrzyvrxxxtiwfoupera.supabase.co/functions/v1/poll-freshdesk?token=YOUR_CRON_SECRET',
+    url:='https://ilrzyvrxxxtiwfoupera.supabase.co/functions/v1/poll-freshdesk?token=poll-secret-abc123',
     headers:='{}'::jsonb
   )
   $$

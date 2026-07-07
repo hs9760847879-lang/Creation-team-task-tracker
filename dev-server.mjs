@@ -20,7 +20,8 @@ for (const line of envContent.split('\n')) {
   process.env[key] = value
 }
 
-import handler from './api/property-summary.mjs'
+import propertySummaryHandler from './api/property-summary.mjs'
+import maintenanceHandler from './api/maintenance.mjs'
 
 function createMockRes(rawRes) {
   return {
@@ -49,7 +50,20 @@ const server = createServer(async (req, res) => {
   if (url.pathname === '/api/property-summary') {
     const mockRes = createMockRes(res)
     try {
-      await handler(req, mockRes)
+      await propertySummaryHandler(req, mockRes)
+    } catch (err) {
+      console.error('Dev server error:', err)
+      res.statusCode = 500
+      res.setHeader('Content-Type', 'application/json')
+      res.end(JSON.stringify({ error: err.message }))
+    }
+    return
+  }
+
+  if (url.pathname === '/api/maintenance') {
+    const mockRes = createMockRes(res)
+    try {
+      await maintenanceHandler(req, mockRes)
     } catch (err) {
       console.error('Dev server error:', err)
       res.statusCode = 500

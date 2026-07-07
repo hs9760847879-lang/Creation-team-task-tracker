@@ -9,6 +9,7 @@ import {
   BarChart3,
   UserCheck,
   Settings,
+  Wrench,
 } from 'lucide-react'
 import { useState } from 'react'
 import { useAuth } from '../../hooks/useAuth'
@@ -27,6 +28,7 @@ const adminLinks = [
   { to: '/admin/agents', label: 'Agents', icon: Users },
   { to: '/admin/stats', label: 'Team Stats', icon: BarChart3 },
   { to: '/admin/individual-performance', label: 'Individual Performance', icon: UserCheck },
+  { to: '/admin/maintenance', label: 'Maintenance', icon: Wrench },
 ]
 
 export default function Sidebar() {
