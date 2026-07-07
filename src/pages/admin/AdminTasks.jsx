@@ -23,18 +23,29 @@ export default function AdminTasks() {
   const [editValue, setEditValue] = useState(1)
   const [editingStatus, setEditingStatus] = useState(null)
 
+  const TASK_PRIORITY = { 'Property Creation': 0, 'Commission': 1, 'Policy Update': 2 }
+
+  function sortAssignments(list) {
+    return [...list].sort((a, b) => {
+      const aDone = a.status === 'completed' ? 1 : 0
+      const bDone = b.status === 'completed' ? 1 : 0
+      if (aDone !== bDone) return aDone - bDone
+      const aPrio = TASK_PRIORITY[a.task?.title] ?? 99
+      const bPrio = TASK_PRIORITY[b.task?.title] ?? 99
+      if (aPrio !== bPrio) return aPrio - bPrio
+      const nameCmp = (a.agent?.name || '').localeCompare(b.agent?.name || '')
+      if (nameCmp !== 0) return nameCmp
+      return new Date(b.created_at) - new Date(a.created_at)
+    })
+  }
+
   const fetchData = useCallback(async () => {
     const [aRes, tRes, agRes] = await Promise.all([
       supabase.from('assignments').select('*, agent:profiles!agent_id(name, email, slack_link), task:tasks(title, type)').order('created_at', { ascending: false }),
       supabase.from('tasks').select('*').eq('is_active', true).order('title'),
       supabase.from('profiles').select('*').eq('role', 'agent').order('name'),
     ])
-    if (aRes.data) {
-      const sorted = [...aRes.data].sort((a, b) =>
-        (a.agent?.name || '').localeCompare(b.agent?.name || '')
-      )
-      setAssignments(sorted)
-    }
+    if (aRes.data) setAssignments(sortAssignments(aRes.data))
     if (tRes.data) setTasks(tRes.data)
     if (agRes.data) setAgents(agRes.data)
     setLoading(false)

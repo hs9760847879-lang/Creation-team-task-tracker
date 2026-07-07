@@ -22,6 +22,20 @@ export default function AgentTasks() {
   const [taskCount, setTaskCount] = useState(1)
   const [slackLink, setSlackLink] = useState('')
 
+  const TASK_PRIORITY = { 'Property Creation': 0, 'Commission': 1, 'Policy Update': 2 }
+
+  function sortAssignments(list) {
+    return [...list].sort((a, b) => {
+      const aDone = a.status === 'completed' ? 1 : 0
+      const bDone = b.status === 'completed' ? 1 : 0
+      if (aDone !== bDone) return aDone - bDone
+      const aPrio = TASK_PRIORITY[a.task?.title] ?? 99
+      const bPrio = TASK_PRIORITY[b.task?.title] ?? 99
+      if (aPrio !== bPrio) return aPrio - bPrio
+      return new Date(b.created_at) - new Date(a.created_at)
+    })
+  }
+
   const fetchAssignments = useCallback(async () => {
     if (!user) return
     const { data } = await supabase
@@ -29,7 +43,7 @@ export default function AgentTasks() {
       .select('*, task:tasks(title, type)')
       .eq('agent_id', user.id)
       .order('created_at', { ascending: false })
-    if (data) setAssignments(data)
+    if (data) setAssignments(sortAssignments(data))
     setLoading(false)
   }, [user])
 

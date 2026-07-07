@@ -70,8 +70,9 @@ export default function AdminAgents() {
       })
       if (signUpError) throw signUpError
 
+      const freshdeskId = newFreshdeskId ? Number(newFreshdeskId) : null
+
       if (data?.user) {
-        const freshdeskId = newFreshdeskId ? Number(newFreshdeskId) : null
         const { error: profileError } = await supabase.from('profiles').upsert({
           id: data.user.id,
           name: newName,
