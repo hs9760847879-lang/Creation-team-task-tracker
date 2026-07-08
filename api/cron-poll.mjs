@@ -174,8 +174,9 @@ export default async function handler(req, res) {
         res.status(400).json({ error: 'backfillAgentId required' })
         return
       }
+      const lookbackDays = body.lookbackDays || 7
       const result = await runPoll(supabase, {
-        lookbackMinutes: 7 * 24 * 60,
+        lookbackMinutes: lookbackDays * 24 * 60,
         targetAgentId: Number(body.backfillAgentId),
       })
       res.json(result)

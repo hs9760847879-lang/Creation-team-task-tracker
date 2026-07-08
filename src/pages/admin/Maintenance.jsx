@@ -15,6 +15,7 @@ export default function Maintenance() {
   const [tickets, setTickets] = useState([])
   const [showTickets, setShowTickets] = useState(false)
   const [ticketsLoading, setTicketsLoading] = useState(false)
+  const [lookbackDays, setLookbackDays] = useState(7)
 
   const fetchProfiles = useCallback(async () => {
     const { data } = await supabase
@@ -71,15 +72,14 @@ export default function Maintenance() {
   const missingInDb = allFdIds.filter(id => !profileByFdId[id])
 
   async function handleBackfill(agentId) {
-    setBackfillStatus(`Triggering backfill for agent ${agentId}...`)
+    const days = lookbackDays
+    setBackfillStatus(`Triggering backfill for agent ${agentId} (${days}d)...`)
     try {
-      const body = agentId === 'all'
-        ? { backfillAll: true }
-        : { backfillAgentId: Number(agentId) }
-      const res = await fetch(
-        'https://ilrzyvrxxxtiwfoupera.supabase.co/functions/v1/poll-freshdesk',
-        { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }
-      )
+      const res = await fetch('/api/cron-poll', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ backfillAgentId: Number(agentId), lookbackDays: days }),
+      })
       const data = await res.json()
       setBackfillStatus(`Done: created=${data.created}, skipped=${data.skipped}`)
     } catch (err) {
@@ -216,7 +216,18 @@ export default function Maintenance() {
             <RefreshCw size={18} className="text-emerald-600" />
             <h2 className="font-semibold text-slate-900">Backfill Controls</h2>
           </div>
-          <div className="space-y-2 max-h-64 overflow-y-auto">
+          <div className="flex items-center gap-2 mb-3">
+            <label className="text-xs font-medium text-text-secondary">Lookback days:</label>
+            <input
+              type="number"
+              min={1}
+              max={365}
+              value={lookbackDays}
+              onChange={e => setLookbackDays(Number(e.target.value))}
+              className="w-20 px-2 py-1 text-sm border border-border rounded-md"
+            />
+          </div>
+          <div className="space-y-2 max-h-56 overflow-y-auto">
             {profiles.filter(p => p.freshdesk_agent_id).map(p => (
               <button
                 key={p.id}
@@ -225,19 +236,20 @@ export default function Maintenance() {
               >
                 <span className="font-medium">{p.name}</span>
                 <span className="text-text-secondary ml-2">(ID: {p.freshdesk_agent_id})</span>
-                <span className="text-indigo-600 text-xs float-right mt-0.5">Backfill 7 days</span>
+                <span className="text-indigo-600 text-xs float-right mt-0.5">Backfill {lookbackDays}d</span>
               </button>
             ))}
           </div>
           <button
             onClick={() => {
+              setBackfillStatus('')
               const ids = profiles.filter(p => p.freshdesk_agent_id).map(p => p.freshdesk_agent_id)
-              handleBackfill(ids[0])
+              ids.forEach((id, i) => setTimeout(() => handleBackfill(id), i * 2000))
             }}
             className="btn btn-primary w-full mt-3 text-sm"
           >
             <RefreshCw size={14} />
-            Trigger Backfill
+            Backfill All Agents ({lookbackDays}d)
           </button>
         </div>
       </div>
