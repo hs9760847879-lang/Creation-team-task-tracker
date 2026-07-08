@@ -16,6 +16,8 @@ export default function Maintenance() {
   const [showTickets, setShowTickets] = useState(false)
   const [ticketsLoading, setTicketsLoading] = useState(false)
   const [lookbackDays, setLookbackDays] = useState(7)
+  const [backfillDetails, setBackfillDetails] = useState(null)
+  const [backfillRunning, setBackfillRunning] = useState(false)
 
   const fetchProfiles = useCallback(async () => {
     const { data } = await supabase
@@ -72,19 +74,24 @@ export default function Maintenance() {
   const missingInDb = allFdIds.filter(id => !profileByFdId[id])
 
   async function handleBackfill(agentId) {
-    const days = lookbackDays
-    setBackfillStatus(`Triggering backfill for agent ${agentId} (${days}d)...`)
+    setBackfillRunning(true)
+    setBackfillDetails(null)
+    setBackfillStatus(`Searching all tickets for agent ${agentId}...`)
     try {
       const res = await fetch('/api/cron-poll', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ backfillAgentId: Number(agentId), lookbackDays: days }),
+        body: JSON.stringify({ backfillAgentId: Number(agentId) }),
       })
       const data = await res.json()
-      setBackfillStatus(`Done: created=${data.created}, skipped=${data.skipped}`)
+      setBackfillDetails(data.details || [])
+      const createdCount = data.details?.filter(d => d.created).length || 0
+      const skippedCount = (data.details?.length || 0) - createdCount
+      setBackfillStatus(`Done: ${createdCount} created, ${skippedCount} skipped (${data.details?.length || 0} total tickets checked)`)
     } catch (err) {
       setBackfillStatus(`Error: ${err.message}`)
     }
+    setBackfillRunning(false)
   }
 
   async function handleClearProcessed() {
@@ -253,6 +260,98 @@ export default function Maintenance() {
           </button>
         </div>
       </div>
+
+      <div className="card p-5 mb-6">
+        <div className="flex items-center gap-2 mb-3">
+          <Search size={18} className="text-indigo-600" />
+          <h2 className="font-semibold text-slate-900">Ticket Lookup</h2>
+        </div>
+        <div className="flex gap-2">
+          <input
+            id="ticketLookupId"
+            type="number"
+            placeholder="Enter Freshdesk ticket ID..."
+            className="flex-1 px-3 py-2 text-sm border border-border rounded-md"
+          />
+          <button
+            onClick={async () => {
+              const input = document.getElementById('ticketLookupId')
+              const id = input?.value
+              if (!id) return
+              setError('')
+              try {
+                const res = await fetch(`/api/maintenance?hours=8760&mode=tickets&ids=${id}`)
+                if (!res.ok) throw new Error(`API error: ${res.status}`)
+                const data = await res.json()
+                if (data.tickets?.length > 0) {
+                  const t = data.tickets[0]
+                  const intOk = t.internal_agent_id && profileByFdId[t.internal_agent_id]
+                  const typeOk = TRACKED_TYPES.includes(t.type)
+                  setBackfillDetails([{
+                    ticketId: t.id,
+                    fdId: t.internal_agent_id || '—',
+                    type: t.type || '—',
+                    created: intOk && typeOk,
+                    reason: !intOk
+                      ? `internal_agent_id ${t.internal_agent_id || 'null'} not in profiles map`
+                      : !typeOk
+                        ? `Type "${t.type}" not tracked (tracked: ${TRACKED_TYPES.join(', ')})`
+                        : 'Ready to import',
+                  }])
+                } else {
+                  setBackfillDetails([{ ticketId: Number(id), fdId: '—', type: '—', created: false, reason: 'Ticket not found in Freshdesk (check ID or lookback window)' }])
+                }
+              } catch (err) {
+                setError(err.message)
+              }
+            }}
+            className="btn btn-primary text-sm"
+          >
+            Lookup
+          </button>
+        </div>
+      </div>
+
+      {backfillDetails && (
+        <div className="card overflow-hidden mb-6">
+          <div className="px-4 py-3 border-b border-border bg-slate-50 flex items-center justify-between">
+            <h2 className="text-sm font-semibold text-slate-900">Backfill Results</h2>
+            <span className="text-xs text-text-secondary">{backfillDetails.filter(d => d.created).length} created, {backfillDetails.filter(d => !d.created).length} skipped</span>
+          </div>
+          <div className="overflow-x-auto max-h-80 overflow-y-auto">
+            <table className="w-full text-sm">
+              <thead className="sticky top-0 bg-slate-50">
+                <tr className="border-b border-border">
+                  <th className="text-left px-3 py-2 font-medium text-text-secondary text-xs">Ticket ID</th>
+                  <th className="text-left px-3 py-2 font-medium text-text-secondary text-xs">Agent FD ID</th>
+                  <th className="text-left px-3 py-2 font-medium text-text-secondary text-xs">Type</th>
+                  <th className="text-left px-3 py-2 font-medium text-text-secondary text-xs">Result</th>
+                  <th className="text-left px-3 py-2 font-medium text-text-secondary text-xs">Reason</th>
+                </tr>
+              </thead>
+              <tbody>
+                {backfillDetails.map((d, i) => (
+                  <tr key={i} className={`border-b border-border hover:bg-slate-50/50 transition-colors ${d.created ? '' : 'opacity-70'}`}>
+                    <td className="px-3 py-1.5 font-mono text-xs">#{d.ticketId}</td>
+                    <td className="px-3 py-1.5 font-mono text-xs">{d.fdId}</td>
+                    <td className="px-3 py-1.5 text-xs">{d.type || '—'}</td>
+                    <td className="px-3 py-1.5 text-xs">
+                      {d.created ? (
+                        <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-medium">Created</span>
+                      ) : d.reason === 'Assignment already exists (duplicate mail_slack_link)' ? (
+                        <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-amber-100 text-amber-700 font-medium">Duplicate</span>
+                      ) : (
+                        <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-red-100 text-red-700 font-medium">Skipped</span>
+                      )}
+                    </td>
+                    <td className="px-3 py-1.5 text-xs text-text-secondary max-w-[300px] truncate" title={d.reason}>{d.reason}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
 
       <div className="card overflow-hidden mb-6">
         <div className="px-4 py-3 border-b border-border bg-slate-50 flex items-center justify-between">

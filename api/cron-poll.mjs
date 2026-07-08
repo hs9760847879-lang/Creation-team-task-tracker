@@ -31,6 +31,12 @@ async function fetchFreshdesk(path) {
   return res.json()
 }
 
+async function searchFreshdeskTickets(query, page = 1, perPage = 100) {
+  const url = `/search/tickets?query="${encodeURIComponent(query)}"&per_page=${perPage}&page=${page}`
+  const res = await fetchFreshdesk(url)
+  return res
+}
+
 async function runPoll(supabase, opts) {
   const since = new Date(Date.now() - opts.lookbackMinutes * 60 * 1000).toISOString()
   console.log(`Fetching tickets updated since ${since}`)
@@ -149,6 +155,115 @@ async function runPoll(supabase, opts) {
   return { created, skipped }
 }
 
+async function runBackfill(supabase, targetAgentId) {
+  const { data: profileData } = await supabase
+    .from('profiles')
+    .select('id, freshdesk_agent_id')
+    .not('freshdesk_agent_id', 'is', null)
+
+  const agentIdsToProfileIds = new Map()
+  for (const p of profileData || []) {
+    agentIdsToProfileIds.set(p.freshdesk_agent_id, p.id)
+  }
+
+  if (agentIdsToProfileIds.size === 0) {
+    return { created: 0, skipped: 0, details: [] }
+  }
+
+  const { data: linkData } = await supabase
+    .from('assignments')
+    .select('mail_slack_link')
+    .not('mail_slack_link', 'is', null)
+  const existingLinks = new Set((linkData || []).map(r => r.mail_slack_link))
+
+  const { data: tasksData } = await supabase.from('tasks').select('id, title').eq('is_active', true)
+  const taskById = new Map((tasksData || []).map(t => [t.title, t.id]))
+
+  let created = 0
+  let skipped = 0
+  const details = []
+
+  const fdIdsToSearch = targetAgentId
+    ? [Number(targetAgentId)]
+    : [...agentIdsToProfileIds.keys()]
+
+  for (const fdId of fdIdsToSearch) {
+    const profileId = agentIdsToProfileIds.get(fdId)
+    if (!profileId) {
+      details.push({ fdId, status: 'skipped', reason: 'No matching profile in DB' })
+      continue
+    }
+
+    let page = 1
+    while (true) {
+      const result = await searchFreshdeskTickets(`agent_id:${fdId}`, page)
+      const tickets = result.results || []
+      if (tickets.length === 0) break
+
+      for (const ticket of tickets) {
+        const internalAgentId = ticket.internal_agent_id
+        const ticketUrl = `https://${FRESHDESK_SUBDOMAIN}.freshdesk.com/a/tickets/${ticket.id}`
+        const type = ticket.type || ''
+
+        if (targetAgentId && internalAgentId !== Number(targetAgentId)) {
+          details.push({ ticketId: ticket.id, fdId, type, reason: `internal_agent_id ${internalAgentId} doesn't match target ${targetAgentId}` })
+          skipped++
+          continue
+        }
+
+        if (!internalAgentId || !agentIdsToProfileIds.has(internalAgentId)) {
+          details.push({ ticketId: ticket.id, fdId, type, reason: `internal_agent_id ${internalAgentId || 'null'} not in profiles map` })
+          skipped++
+          continue
+        }
+
+        const taskTitle = matchTaskType(type)
+        if (!taskTitle) {
+          details.push({ ticketId: ticket.id, fdId, type, reason: `Type "${type}" not in TASK_MAP` })
+          skipped++
+          continue
+        }
+
+        const taskId = taskById.get(taskTitle)
+        if (!taskId) {
+          details.push({ ticketId: ticket.id, fdId, type, reason: `Task "${taskTitle}" not found in tasks table` })
+          skipped++
+          continue
+        }
+
+        if (existingLinks.has(ticketUrl)) {
+          details.push({ ticketId: ticket.id, fdId, type, reason: 'Assignment already exists (duplicate mail_slack_link)', skipped: true })
+          skipped++
+          continue
+        }
+
+        const assignedProfileId = agentIdsToProfileIds.get(internalAgentId)
+        const { error } = await supabase.from('assignments').insert({
+          agent_id: assignedProfileId,
+          task_id: taskId,
+          status: 'not_started',
+          task_count: 1,
+          mail_slack_link: ticketUrl,
+          registered_by_agent: false,
+        })
+
+        if (error) {
+          details.push({ ticketId: ticket.id, fdId, type, reason: `DB insert error: ${error.message}` })
+          skipped++
+        } else {
+          details.push({ ticketId: ticket.id, fdId, type, reason: 'Created', created: true })
+          created++
+        }
+      }
+
+      if (tickets.length < 100) break
+      page++
+    }
+  }
+
+  return { created, skipped, details: details.slice(0, 500) }
+}
+
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
@@ -174,11 +289,7 @@ export default async function handler(req, res) {
         res.status(400).json({ error: 'backfillAgentId required' })
         return
       }
-      const lookbackDays = body.lookbackDays || 7
-      const result = await runPoll(supabase, {
-        lookbackMinutes: lookbackDays * 24 * 60,
-        targetAgentId: Number(body.backfillAgentId),
-      })
+      const result = await runBackfill(supabase, body.backfillAgentId)
       res.json(result)
     } catch (err) {
       console.error('Backfill error:', err)
