@@ -22,6 +22,7 @@ for (const line of envContent.split('\n')) {
 
 import propertySummaryHandler from './api/property-summary.mjs'
 import maintenanceHandler from './api/maintenance.mjs'
+import cronPollHandler from './api/cron-poll.mjs'
 
 function createMockRes(rawRes) {
   return {
@@ -64,6 +65,19 @@ const server = createServer(async (req, res) => {
     const mockRes = createMockRes(res)
     try {
       await maintenanceHandler(req, mockRes)
+    } catch (err) {
+      console.error('Dev server error:', err)
+      res.statusCode = 500
+      res.setHeader('Content-Type', 'application/json')
+      res.end(JSON.stringify({ error: err.message }))
+    }
+    return
+  }
+
+  if (url.pathname === '/api/cron-poll') {
+    const mockRes = createMockRes(res)
+    try {
+      await cronPollHandler(req, mockRes)
     } catch (err) {
       console.error('Dev server error:', err)
       res.statusCode = 500
